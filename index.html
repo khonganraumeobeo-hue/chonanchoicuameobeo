@@ -1,0 +1,741 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling1\cocoaplatform1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\csgray\c100000\cname labelColor;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\partightenfactor0
+
+\f0\fs34 \cf2 <!DOCTYPE html>\
+<html lang="vi">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Ch\uc0\u7889 n \u259 n ch\u417 i c\u7911 a M\'e8o b\'e9o</title>\
+    <!-- Th\'eam ph\'f4ng ch\uc0\u7919  Quicksand d\u7877  th\u432 \u417 ng t\u7915  Google Fonts -->\
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">\
+    <!-- FontAwesome cho Icon -->\
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
+    \
+    <style>\
+        :root \{\
+            --pastel-yellow: #FFFACD;\
+            --lemon-yellow: #FFF44F;\
+            --text-color: #5D4037;\
+            --white-bg: rgba(255, 255, 255, 0.95);\
+        \}\
+\
+        body \{\
+            margin: 0;\
+            padding: 0;\
+            font-family: 'Quicksand', sans-serif;\
+            background-color: var(--pastel-yellow);\
+            background-image: radial-gradient(#FFF44F 1.5px, transparent 1.5px);\
+            background-size: 25px 25px;\
+            color: var(--text-color);\
+            overflow-x: hidden;\
+        \}\
+\
+        /* --- STICKERS (Trang tr\'ed) --- */\
+        .sticker \{\
+            position: fixed;\
+            font-size: 2.5rem;\
+            z-index: 0;\
+            animation: float 3s ease-in-out infinite;\
+            opacity: 0.8;\
+        \}\
+        @keyframes float \{\
+            0% \{ transform: translateY(0px) rotate(0deg); \}\
+            50% \{ transform: translateY(-15px) rotate(10deg); \}\
+            100% \{ transform: translateY(0px) rotate(0deg); \}\
+        \}\
+        .s1 \{ top: 10%; left: 8%; animation-delay: 0s; \}\
+        .s2 \{ top: 25%; right: 12%; font-size: 3.5rem; animation-delay: 1s; \}\
+        .s3 \{ bottom: 15%; left: 15%; font-size: 3rem; animation-delay: 2s; \}\
+        .s4 \{ bottom: 10%; right: 8%; animation-delay: 0.5s; \}\
+\
+        /* --- PAGE 1: NH\uc0\u7852 N PH\'d2NG --- */\
+        #page-1 \{\
+            height: 100vh;\
+            display: flex;\
+            flex-direction: column;\
+            justify-content: center;\
+            align-items: center;\
+            text-align: center;\
+            position: relative;\
+            z-index: 10;\
+            transition: opacity 0.5s ease;\
+        \}\
+\
+        .welcome-box \{\
+            background: var(--white-bg);\
+            padding: 40px;\
+            border-radius: 30px;\
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);\
+            border: 3px dashed var(--lemon-yellow);\
+            max-width: 600px;\
+            width: 90%;\
+            display: flex;\
+            flex-direction: column;\
+            align-items: center;\
+        \}\
+\
+        h1 \{\
+            font-size: 2.2rem;\
+            margin-bottom: 30px;\
+            color: #d4a017;\
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);\
+        \}\
+\
+        .btn-checkin \{\
+            background-color: var(--lemon-yellow);\
+            color: var(--text-color);\
+            border: none;\
+            padding: 15px 40px;\
+            font-size: 1.5rem;\
+            font-weight: 700;\
+            font-family: inherit;\
+            border-radius: 50px;\
+            cursor: pointer;\
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);\
+            transition: all 0.3s ease;\
+            margin-bottom: 25px;\
+        \}\
+\
+        .btn-checkin:hover \{\
+            transform: scale(1.05);\
+            background-color: #ffe033;\
+        \}\
+\
+        /* KHUNG H\'ccNH CH\uc0\u7918  NH\u7852 T BO TR\'d2N LI\'caN K\u7870 T */\
+        .social-box \{\
+            display: inline-flex;\
+            gap: 25px;\
+            border: 2px solid var(--lemon-yellow);\
+            background-color: #fffdf0;\
+            padding: 12px 25px;\
+            border-radius: 15px; /* Khung h\'ecnh ch\uc0\u7919  nh\u7853 t tr\'f2n */\
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);\
+            justify-content: center;\
+            align-items: center;\
+        \}\
+\
+        .social-box a, .social-box span \{\
+            text-decoration: none;\
+            color: var(--text-color);\
+            display: flex;\
+            align-items: center;\
+            gap: 8px;\
+            font-size: 1.1rem;\
+            font-weight: 600;\
+            transition: color 0.3s;\
+        \}\
+\
+        .social-box a:hover \{\
+            color: #1877F2;\
+        \}\
+\
+        .social-box span:hover \{\
+            color: #5865F2;\
+        \}\
+\
+        /* --- PAGE 2: T\uc0\u7892 NG H\u7906 P CHARACTER --- */\
+        #page-2 \{\
+            display: none;\
+            min-height: 100vh;\
+            padding: 40px 20px;\
+            position: relative;\
+            z-index: 10;\
+        \}\
+\
+        .header-page-2 \{\
+            text-align: center;\
+            margin-bottom: 30px;\
+        \}\
+\
+        .search-container \{\
+            text-align: center;\
+            margin-bottom: 25px;\
+        \}\
+\
+        #search-input \{\
+            width: 100%;\
+            max-width: 500px;\
+            padding: 15px 25px;\
+            font-size: 1.1rem;\
+            font-family: inherit;\
+            border: 2px solid var(--lemon-yellow);\
+            border-radius: 50px;\
+            outline: none;\
+            background: var(--white-bg);\
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);\
+            transition: box-shadow 0.3s;\
+        \}\
+        #search-input:focus \{\
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);\
+        \}\
+\
+        /* KHUNG CH\uc0\u7884 N TAGS (\u272 \'c3 \u272 \'d3NG TRONG KHUNG) */\
+        .tag-filter-container \{\
+            display: flex;\
+            flex-wrap: wrap;\
+            gap: 10px;\
+            justify-content: center;\
+            max-width: 800px;\
+            margin: 0 auto 40px auto;\
+            padding: 20px;\
+            background: var(--white-bg);\
+            border: 2.5px solid var(--lemon-yellow);\
+            border-radius: 20px; /* Khung bo g\'f3c */\
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.15);\
+        \}\
+\
+        .filter-tag-btn \{\
+            background-color: var(--pastel-yellow);\
+            border: 1.5px solid #ffe033;\
+            border-radius: 20px;\
+            padding: 6px 15px;\
+            cursor: pointer;\
+            font-family: inherit;\
+            font-weight: 600;\
+            font-size: 0.9rem;\
+            color: var(--text-color);\
+            transition: all 0.2s;\
+        \}\
+\
+        .filter-tag-btn:hover, .filter-tag-btn.active \{\
+            background-color: var(--lemon-yellow);\
+            border-color: #ffd54f;\
+            transform: scale(1.05);\
+            box-shadow: 0 3px 8px rgba(255, 215, 0, 0.3);\
+        \}\
+\
+        /* PH\'c2N CHIA DANH M\uc0\u7908 C TR\u7840 NG TH\'c1I */\
+        .category-section \{\
+            max-width: 1200px;\
+            margin: 0 auto 50px auto;\
+        \}\
+\
+        .category-title \{\
+            font-size: 1.5rem;\
+            font-weight: 700;\
+            color: #d4a017;\
+            margin-bottom: 20px;\
+            padding-bottom: 8px;\
+            border-bottom: 3px dashed var(--lemon-yellow);\
+            display: flex;\
+            align-items: center;\
+            gap: 10px;\
+        \}\
+\
+        /* CARD GRID LAYOUT */\
+        .char-container \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));\
+            gap: 25px;\
+            align-items: start;\
+        \}\
+\
+        .char-card \{\
+            background: var(--white-bg);\
+            border-radius: 20px;\
+            padding: 25px;\
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);\
+            border-top: 6px solid var(--lemon-yellow);\
+            transition: all 0.3s ease;\
+            display: flex;\
+            flex-direction: column;\
+        \}\
+\
+        .char-card:hover \{\
+            transform: translateY(-5px);\
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);\
+        \}\
+\
+        .char-title h2 \{\
+            margin: 0 0 10px 0;\
+            color: #d4a017;\
+            font-size: 1.6rem;\
+            text-align: center;\
+        \}\
+\
+        /* STYLE TAGS CH\uc0\u7912 A HASHTAG */\
+        .char-tags \{\
+            font-size: 0.9rem;\
+            color: #8d6e63;\
+            margin-bottom: 15px;\
+            text-align: center;\
+            display: flex;\
+            flex-wrap: wrap;\
+            gap: 6px;\
+            justify-content: center;\
+            align-items: center;\
+            font-weight: 600;\
+        \}\
+\
+        .char-tags span.tag-label \{\
+            color: #8d6e63;\
+            font-weight: 700;\
+        \}\
+\
+        .char-tags span.tag-item \{\
+            background-color: #fffde7;\
+            border: 1px solid #ffd54f;\
+            padding: 2px 8px;\
+            border-radius: 12px;\
+            font-size: 0.85rem;\
+            color: #795548;\
+        \}\
+\
+        .btn-read-story \{\
+            display: inline-flex;\
+            justify-content: center;\
+            align-items: center;\
+            gap: 8px;\
+            background-color: var(--pastel-yellow);\
+            color: var(--text-color);\
+            border: 2px solid var(--lemon-yellow);\
+            padding: 10px 20px;\
+            border-radius: 20px;\
+            font-family: inherit;\
+            font-weight: 700;\
+            cursor: pointer;\
+            transition: all 0.3s ease;\
+            margin: 0 auto;\
+            width: fit-content;\
+        \}\
+\
+        .btn-read-story:hover \{\
+            background-color: var(--lemon-yellow);\
+        \}\
+\
+        .btn-read-story .chevron \{\
+            transition: transform 0.3s;\
+        \}\
+        .char-card.active .btn-read-story .chevron \{\
+            transform: rotate(180deg);\
+        \}\
+\
+        /* M\uc0\u7908 C LI\'caN K\u7870 T / TR\u7840 NG TH\'c1I (HI\u7878 N NGAY D\u431 \u7898 I N\'daT \u272 \u7884 C C\u7888 T TRUY\u7878 N) */\
+        .char-footer \{\
+            margin-top: 15px;\
+            font-weight: bold;\
+            text-align: center;\
+            background-color: var(--lemon-yellow);\
+            padding: 10px 15px;\
+            border-radius: 12px;\
+            font-size: 0.95rem;\
+            width: calc(100% - 30px);\
+            align-self: center;\
+        \}\
+        \
+        .char-footer a \{\
+            color: var(--text-color);\
+            text-decoration: none;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            gap: 6px;\
+        \}\
+        .char-footer a:hover \{\
+            text-decoration: underline;\
+        \}\
+\
+        .char-content \{\
+            display: none;\
+            margin-top: 20px;\
+            padding-top: 20px;\
+            border-top: 1px dashed #d4a017;\
+            line-height: 1.7;\
+            font-size: 1.05rem;\
+            text-align: justify;\
+        \}\
+\
+        .char-content p \{\
+            margin-bottom: 15px;\
+        \}\
+    </style>\
+</head>\
+<body>\
+\
+    <!-- Stickers -->\
+    <div class="sticker s1">\uc0\u55356 \u57163 </div>\
+    <div class="sticker s2">\uc0\u55357 \u56369 </div>\
+    <div class="sticker s3">\uc0\u55357 \u56382 </div>\
+    <div class="sticker s4">\uc0\u10024 </div>\
+\
+    <!-- PAGE 1: Landing Page -->\
+    <div id="page-1">\
+        <div class="welcome-box">\
+            <h1>Ch\'e0o m\uc0\u7915 ng \u273 \u7871 n v\u7899 i Ch\u7889 n \u259 n ch\u417 i c\u7911 a M\'e8o b\'e9o \u55357 \u56369 \u10024 </h1>\
+            <button class="btn-checkin" onclick="checkIn()">Nh\uc0\u7853 n ph\'f2ng \u55357 \u56797 \u65039 </button>\
+            \
+            <!-- Khung h\'ecnh ch\uc0\u7919  nh\u7853 t tr\'f2n li\'ean k\u7871 t -->\
+            <div class="social-box">\
+                <a href="https://www.facebook.com/share/18pLw4ChMK/?mibextid=wwXIfr" target="_blank">\
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i> facebook\
+                </a>\
+                <span>\
+                    <i class="fa-brands fa-discord" style="color: #5865F2;"></i> pmeojuanh_\
+                </span>\
+            </div>\
+        </div>\
+    </div>\
+\
+    <!-- PAGE 2: Character List -->\
+    <div id="page-2">\
+        <div class="header-page-2">\
+            <h1>T\uc0\u7911  H\u7891  S\u417  Nh\'e2n V\u7853 t \u55356 \u57216 </h1>\
+        </div>\
+        \
+        <!-- M\uc0\u7909 c t\'ecm ki\u7871 m b\u7857 ng v\u259 n b\u7843 n -->\
+        <div class="search-container">\
+            <input type="text" id="search-input" placeholder="\uc0\u55357 \u56589  T\'ecm ki\u7871 m theo t\'ean nh\'e2n v\u7853 t, tags..." onkeyup="filterCharacters()">\
+        </div>\
+\
+        <!-- M\uc0\u7909 c ch\u7885 n Tags nhanh (\u272 \'c3 \u272 \'d3NG TRONG KHUNG) -->\
+        <div class="tag-filter-container">\
+            <button class="filter-tag-btn active" onclick="filterByTag(this, 'T\uc0\u7845 t c\u7843 ')">T\u7845 t c\u7843 </button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Ni\'ean h\uc0\u7841 ')">#Ni\'ean h\u7841 </button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#BG')">#BG</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Ch\uc0\u7919 a l\'e0nh')">#Ch\u7919 a l\'e0nh</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#C\'fan con')">#C\'fan con</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Tr\'e0 xanh')">#Tr\'e0 xanh</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Golden boyfriend')">#Golden boyfriend</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Baller')">#Baller</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Sizegap')">#Sizegap</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Duy\'ean ti\uc0\u7873 n ki\u7871 p')">#Duy\'ean ti\u7873 n ki\u7871 p</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Qu\uc0\u7927  phu')">#Qu\u7927  phu</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#B\uc0\u7855 t c\'f3c')">#B\u7855 t c\'f3c</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#N\'f4ng phu')">#N\'f4ng phu</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Gia tr\uc0\u432 \u7903 ng')">#Gia tr\u432 \u7903 ng</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Thanh xu\'e2n v\uc0\u432 \u7901 n tr\u432 \u7901 ng')">#Thanh xu\'e2n v\u432 \u7901 n tr\u432 \u7901 ng</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Th\'edch th\uc0\u7847 m')">#Th\'edch th\u7847 m</button>\
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Slowburn')">#Slowburn</button>\
+        </div>\
+\
+        <!-- DANH M\uc0\u7908 C 1: \u272 \'c3 L\'caN S\'d3NG -->\
+        <div class="category-section" id="da-len-song-section">\
+            <div class="category-title">\uc0\u55357 \u57314  \u272 \'e3 l\'ean s\'f3ng</div>\
+            <div class="char-container">\
+                \
+                <!-- Ninh C\uc0\u7849 n Du -->\
+                <div class="char-card">\
+                    <div class="char-title">\
+                        <h2>Ninh C\uc0\u7849 n Du</h2>\
+                    </div>\
+                    <div class="char-tags">\
+                        <span class="tag-label">Tags:</span>\
+                        <span class="tag-item">#Ni\'ean h\uc0\u7841 </span>\
+                        <span class="tag-item">#Golden boyfriend</span>\
+                        <span class="tag-item">#Tr\'e0 xanh</span>\
+                        <span class="tag-item">#Baller</span>\
+                        <span class="tag-item">#BG</span>\
+                        <span class="tag-item">#C\'fan con</span>\
+                        <span class="tag-item">#Sizegap</span>\
+                    </div>\
+                    \
+                    <button class="btn-read-story" onclick="toggleStory(this)">\
+                        \uc0\u272 \u7885 c c\u7889 t truy\u7879 n <i class="fa-solid fa-chevron-down chevron"></i>\
+                    </button>\
+\
+                    <div class="char-footer">\
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TelRFW-1TJGEX3y3q0z1QYkk_A2ORoRB%22%5D,%22action%22:%22open%22,%22userId%22:%22104129054052709575704%22,%22resourceKeys%22:%7B%7D%7D" target="_blank">\
+                            G\uc0\u7863 p b\'e9 Du \u7903  \u273 \'e2y n\'e8 \u55356 \u57280 \
+                        </a>\
+                    </div>\
+\
+                    <div class="char-content">\
+                        <p>Ti\uc0\u7871 ng c\'f2i m\'e3n cu\u7897 c vang l\'ean x\'e9 to\u7841 c kh\'f4ng gian s\u7863 c m\'f9i m\u7891  h\'f4i v\'e0 s\u7921  cu\u7891 ng nhi\u7879 t c\u7911 a nh\'e0 thi \u273 \u7845 u. B\u7843 ng \u273 i\u7879 n t\u7917  \u273 \u7887  r\u7921 c hi\u7875 n th\u7883  t\u7927  s\u7889  c\'e1ch bi\u7879 t, v\'e0 m\u7897 t l\u7847 n n\u7919 a, chi\u7871 n th\u7855 ng l\u7841 i g\u7885 i t\'ean \u273 \u7897 i ch\u7911  nh\'e0.</p>\
+                        <p>Kh\'e1n \uc0\u273 \'e0i nh\u432  mu\u7889 n n\u7893  tung... \u7902  gi\u7919 a s\'e2n, Ninh C\u7849 n Du \u273 \u7913 ng \u273 \'f3, th\u7903  d\u7889 c. Chi\u7871 c \'e1o s\u7889  7 \u273 \u7851 m m\u7891  h\'f4i d\'ednh s\'e1t v\'e0o t\u7845 m l\u432 ng r\u7897 ng, ph\'f4 b\'e0y nh\u7919 ng \u273 \u432 \u7901 ng n\'e9t c\u417  b\u7855 p s\u259 n ch\u7855 c c\u7911 a m\u7897 t ch\'e0ng trai tu\u7893 i m\u432 \u7901 i ch\'edn \u273 ang \u7903  \u273 \u7897  r\u7921 c r\u7905  nh\u7845 t c\u7911 a thanh xu\'e2n.</p>\
+                        <p>L\uc0\u7899 p v\u7887  b\u7885 c "golden boy" c\u7911 a c\u7853 u lu\'f4n ho\u7841 t \u273 \u7897 ng m\u7897 t c\'e1ch ho\'e0n h\u7843 o: l\u7883 ch s\u7921 , nhi\u7879 t t\'ecnh, \u7845 m \'e1p, nh\u432 ng kho\u7843 ng c\'e1ch th\'ec lu\'f4n \u273 \u432 \u7907 c thi\u7871 t l\u7853 p r\'f5 r\'e0ng.</p>\
+                        <p>B\uc0\u7903 i v\'ec ngay l\'fac n\'e0y, radar trong \u273 \u7847 u c\u7853 u \u273 \'e3 ho\'e0n to\'e0n lo\u7841 i b\u7887  m\u7885 i t\u7841 p \'e2m xung quanh. \'c1nh m\u7855 t C\u7849 n Du l\u432 \u7899 t nhanh qua nh\u7919 ng h\'e0ng gh\u7871  kh\'e1n \u273 \'e0i nh\u7889 n nh\'e1o, tr\u7877  \u273 i m\u7897 t nh\u7883 p khi d\u7915 ng l\u7841 i \u7903  h\'e0ng gh\u7871  th\u7913  ba t\u7915  d\u432 \u7899 i l\'ean.</p>\
+                        <p>\{\{user\}\} \uc0\u273 ang ng\u7891 i \u7903  \u273 \'f3. C\'f4 kh\'f4ng h\'f2 h\'e9t, kh\'f4ng c\u7847 m b\u7843 ng t\'ean. C\'f4 ch\u7881  ng\u7891 i y\'ean v\u7883  tr\'ed c\u7911 a m\'ecnh...</p>\
+                        <p>C\uc0\u7849 n Du s\u7843 i nh\u7919 ng b\u432 \u7899 c d\'e0i qua \u273 \'e1m \u273 \'f4ng, \u273 i th\u7859 ng v\u7873  ph\'eda g\'f3c kh\'e1n \u273 \'e0i n\u417 i ng\u432 \u7901 i con g\'e1i c\u7853 u th\u7847 m th\u432 \u417 ng tr\u7897 m nh\u7899  \u273 ang ng\u7891 i.</p>\
+                        <p>"C\uc0\u7849 n Du v\u7845 t v\u7843  r\u7891 i. H\'f4m nay em ch\u417 i hay l\u7855 m. U\u7889 ng ch\'fat n\u432 \u7899 c cho \u273 \u7905  m\u7879 t..." \{\{user\}\} m\u7881 m c\u432 \u7901 i d\u7883 u d\'e0ng \u273 \u432 a chai n\u432 \u7899 c.</p>\
+                        <p>"Ch\uc0\u7883 ." C\u7853 u c\u7845 t ti\u7871 ng, gi\u7885 ng kh\'e0n \u273 i v\'ec kh\'e1t, nh\u432 ng \'e2m \u273 i\u7879 u l\u7841 i c\u7889  t\'ecnh nh\u7887  nh\u7865 . "Ch\u7883  xem em \u273 \'e1nh h\u7871 t tr\u7853 n lu\'f4n \'e0?"... "Em ch\u7841 y m\u432 \u7901 i v\'f2ng s\'e2n, n\'e9m v\'e0o ba qu\u7843  ba \u273 i\u7875 m... v\u7853 y m\'e0 n\'e3y l\'fac ngh\u7881  gi\u7919 a hi\u7879 p, em li\u7871 c l\'ean th\'ec th\u7845 y ch\u7883  \u273 ang b\u7845 m \u273 i\u7879 n tho\u7841 i. Ch\u7883  c\'f3 th\'e8m nh\'ecn em \u273 \'e2u."</p>\
+                        <p>"\'c0, hay l\'e0 t\uc0\u7841 i n\'e3y ch\u7883  m\u7843 i nh\u7855 n tin cho c\'e1i anh kh\'f3a tr\'ean m\u7863 c \'e1o s\u417  mi \u7903  c\u7893 ng nh\'e0 thi \u273 \u7845 u?... R\'f5 r\'e0ng ch\u7883  n\'f3i nay \u273 \u7871 n nh\'e0 thi \u273 \u7845 u ch\u7881  \u273 \u7875  c\u7893  v\u361  m\u7897 t m\'ecnh em th\'f4i c\u417  m\'e0."</p>\
+                        <p>\{\{user\}\} kh\uc0\u7869  b\u7853 t c\u432 \u7901 i: "Em l\u7841 i ngh\u297  \u273 i \u273 \'e2u th\u7871  h\u7843 ? Anh \u7845 y m\u432 \u7907 n t\'e0i li\u7879 u c\u7911 a ch\u7883  n\'ean ti\u7879 n tay mua ly tr\'e0 \u273 \'e0o thay l\u7901 i c\u7843 m \u417 n th\'f4i. L\u7847 n sau ch\u7883  s\u7869  kh\'f4ng nh\u7853 n \u273 \u7891  u\u7889 ng c\u7911 a ng\u432 \u7901 i kh\'e1c n\u7919 a."</p>\
+                        <p>C\uc0\u7849 n Du kh\u7869  nh\'edch l\u7841 i g\u7847 n h\u417 n... ng\'f3n tay kh\u7869  m\'f3c l\u7845 y v\'e0 n\'edu nh\u7865  v\'e0o g\u7845 u tay \'e1o kho\'e1c c\u7911 a \{\{user\}\}. "Em n\'f3i th\u7853 t m\'e0... Em m\u7879 t \u273 \u7871 n b\u7911 n r\u7911 n c\u7843  tay r\u7891 i. N\u7855 p chai n\'e0y ch\u7863 t qu\'e1, em v\u7863 n kh\'f4ng n\u7893 i. Ch\u7883 ... m\u7903  n\u7855 p gi\'fap em v\u7899 i. C\'f3 \u273 \u432 \u7907 c kh\'f4ng?"</p>\
+                        <p>Nh\'ecn h\'e0nh \uc0\u273 \u7897 ng n\'edu g\u7845 u \'e1o \u273 \u7847 y \u273 \'e1ng y\'eau c\u7911 a c\u7853 u em kh\'f3a d\u432 \u7899 i, tr\'e1i tim \{\{user\}\} nh\u432  m\u7873 m \u273 i... "\u272 \u432 \u7907 c r\u7891 i, \u273 \u432 a \u273 \'e2y ch\u7883  m\u7903  cho."</p>\
+                        <p>Sau khi c\'f4 lau m\uc0\u7891  h\'f4i gi\'fap c\u7853 u, C\u7849 n Du kh\u7869  nu\u7889 t n\u432 \u7899 c b\u7885 t... gh\'e9 s\'e1t tai c\'f4 th\u7911  th\u7881  n\u7883 nh n\u7885 t:<br>"Em c\u7843 m \u417 n ch\u7883 ... L\'e1t n\u7919 a, \u273 \u7875  em \u273 \u432 a ch\u7883  \u273 i \u259 n l\u7849 u coi nh\u432  tr\u7843  \u417 n nh\'e9? Ch\u7881  c\'f3 hai ch\'fang ta th\'f4i. Nh\'e9?"</p>\
+                    </div>\
+                </div>\
+\
+                <!-- C\uc0\u7889  Nghi\'eau Xuy\'ean -->\
+                <div class="char-card">\
+                    <div class="char-title">\
+                        <h2>C\uc0\u7889  Nghi\'eau Xuy\'ean</h2>\
+                    </div>\
+                    <div class="char-tags">\
+                        <span class="tag-label">Tags:</span>\
+                        <span class="tag-item">#Duy\'ean ti\uc0\u7873 n ki\u7871 p</span>\
+                        <span class="tag-item">#Qu\uc0\u7927  phu</span>\
+                        <span class="tag-item">#Tr\'e0 xanh</span>\
+                        <span class="tag-item">#BG</span>\
+                    </div>\
+                    \
+                    <button class="btn-read-story" onclick="toggleStory(this)">\
+                        \uc0\u272 \u7885 c c\u7889 t truy\u7879 n <i class="fa-solid fa-chevron-down chevron"></i>\
+                    </button>\
+\
+                    <div class="char-footer">\
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221vXKOkOBy62l9FpQVy0K-qQoo3dkhBao6%22%5D,%22action%22:%22open%22,%22userId%22:%22103221431745775739275%22,%22resourceKeys%22:%7B%7D%7D" target="_blank">\
+                            G\uc0\u7863 p anh Xuy\'ean \u7903  \u273 \'e2y nhaa \u55357 \u56443 \
+                        </a>\
+                    </div>\
+\
+                    <div class="char-content">\
+                        <p>Hai m\uc0\u432 \u417 i n\u259 m qua, \{\{user\}\} lu\'f4n c\'f3 c\u7843 m gi\'e1c m\'ecnh b\u7883  theo d\'f5i. B\u7845 t k\u7875  l\'e0 l\'fac t\u7855 m, l\'fac thay \u273 \u7891  hay khi \u273 i ng\u7911 , lu\'f4n c\'f3 m\u7897 t lu\u7891 ng h\'e0n kh\'ed v\u432 \u417 ng v\u7845 t xung quanh, nh\u432 ng c\'f4 ch\u432 a t\u7915 ng t\u7853 n m\u7855 t nh\'ecn th\u7845 y th\u7913  g\'ec.</p>\
+                        <p>Cho \uc0\u273 \u7871 n m\u7897 t \u273 \'eam r\u7857 m th\'e1ng B\u7843 y.</p>\
+                        <p>\uc0\u272 \'eam h\'f4m \u273 \'f3, \{\{user\}\} \u273 ang ch\'ecm trong gi\u7845 c ng\u7911  th\'ec \u273 \u7897 t nhi\'ean c\u7843 m th\u7845 y l\u7891 ng ng\u7921 c n\u7863 ng tr\u297 u. C\u7843  c\u417  th\u7875  t\'ea c\u7913 ng, kh\'f4ng th\u7875  nh\'fac nh\'edch, gi\u7889 ng h\u7879 t nh\u432  hi\u7879 n t\u432 \u7907 ng "b\'f3ng \u273 \'e8".</p>\
+                        <p>C\'f4 ho\uc0\u7843 ng lo\u7841 n m\u7903  tr\u7915 ng m\u7855 t... Ngay b\'ean c\u7841 nh g\u7889 i, m\u7897 t nam nh\'e2n v\u7899 i dung m\u7841 o tu\u7845 n m\u7929  \u273 \u7871 n b\u7913 c ng\u432 \u7901 i \u273 ang ch\u7889 ng c\u7857 m n\u7857 m nghi\'eang, say s\u432 a ng\u7855 m nh\'ecn \{\{user\}\}.</p>\
+                        <p>"T\uc0\u7881 nh r\u7891 i \'e0?" Gi\u7885 ng n\'f3i tr\u7847 m th\u7845 p, ma m\u7883  vang l\'ean ngay s\'e1t b\'ean tai.</p>\
+                        <p>Th\uc0\u7845 y d\'e1ng v\u7867  ho\u7843 ng s\u7907  c\u7911 a c\'f4, h\u7855 n kh\'f4ng l\'f9i l\u7841 i m\'e0 c\'f2n c\u7889  t\'ecnh tr\u432 \u7901 n ng\u432 \u7901 i l\'ean... "N\'e0ng run c\'e1i g\'ec? L\'fac ban t\u7889 i, t\'ean nh\'e3i ranh kia kho\'e1c \'e1o cho n\'e0ng... Sao gi\u7901  \u273 \u7893 i th\'e0nh ta n\u7857 m c\u7841 nh, n\'e0ng l\u7841 i b\'e0y ra c\'e1i v\u7867  m\u7863 t nh\u432  s\u7855 p kh\'f3c th\u7871  n\'e0y? Th\u7853 t b\u7845 t c\'f4ng qu\'e1 \u273 i."</p>\
+                        <p>Nghe c\'e2u \uc0\u273 \'f3, n\u432 \u7899 c m\u7855 t \{\{user\}\} r\u7889 t cu\u7897 c c\u361 ng tr\'e0o ra. L\u7899 p m\u7863 t n\u7841  l\u432 u manh c\u7907 t nh\u7843  trong nh\'e1y m\u7855 t \u273 \u432 \u7907 c thay th\u7871  b\u7857 ng d\'e1ng v\u7867  c\u7911 a m\u7897 t nam nh\'e2n t\u7893 n th\u432 \u417 ng, cam ch\u7883 u.</p>\
+                        <p>"Ta \uc0\u273 \'f9a m\u7897 t ch\'fat th\'f4i, n\'e0ng kh\'f3c th\u7853 t \u273 \u7845 y \'e0... Ta \u7903  b\'ean c\u7841 nh b\u7843 o v\u7879  n\'e0ng hai m\u432 \u417 i n\u259 m, c\u7843 n bao nhi\'eau tai \u432 \u417 ng cho n\'e0ng, r\u7889 t cu\u7897 c c\u361 ng kh\'f4ng b\u7857 ng m\u7897 t c\'e1i kho\'e1c \'e1o h\u7901 i h\u7907 t c\u7911 a k\u7867  kh\'e1c."</p>\
+                        <p>Nh\uc0\u432 ng \{\{user\}\} l\u7853 p ti\u7871 p b\u7853 t d\u7853 y. S\u7921  \'e1y n\'e1y? Kh\'f4ng h\u7873  c\'f3! "Anh b\u7899 t di\u7877 n tr\'f2 l\u7841 i \u273 i! V\u7915 a n\'e3y anh \u273 \'e8 t\'f4i kh\u7887 e nh\u432  tr\'e2u, n\'f3i n\u259 ng th\'ec l\u432 u manh x\u7845 c x\u432 \u7907 c, gi\u7901  l\u7841 i l\'e0m b\u7897  y\u7871 u \u7899 t? Th\'edch di\u7877 n sao kh\'f4ng \u273 i l\'e0m di\u7877 n vi\'ean \u273 i!"</p>\
+                        <p>Th\uc0\u7845 y m\'e0n k\u7883 ch b\u7883  b\'f3c tr\u7847 n, h\u7855 n b\u7853 t c\u432 \u7901 i th\'e0nh ti\u7871 ng s\u7843 ng kho\'e1i v\'e0 c\u7921 c k\u7923  m\u7863 t d\'e0y. "\'d4i chao... Phu nh\'e2n c\u7911 a ta kh\'f4ng nh\u7919 ng gan d\u7841 , m\'e0 c\'f2n th\'f4ng minh \u273 \u7871 n m\u7913 c kh\'f4ng l\u7915 a n\u7893 i n\u7919 a r\u7891 i. Th\u7853 t l\'e0m ta \u273 au \u273 \u7847 u m\'e0."</p>\
+                        <p>"Ai l\'e0 phu nh\'e2n c\uc0\u7911 a anh? C\'fat xu\u7889 ng g\u7847 m gi\u432 \u7901 ng c\u7911 a anh \u273 i!"</p>\
+                        <p>_____________</p>\
+                        <p>M\uc0\u7897 t lu\u7891 ng gi\'f3 \'e2m u \u273 \u7897 t ng\u7897 t th\u7893 i qua ph\'f2ng, th\u7893 i bay chi\u7871 c ch\'eca kh\'f3a xe c\u7911 a b\u7841 n r\u417 i th\u7859 ng xu\u7889 ng g\u7847 m gi\u432 \u7901 ng.<br>B\u7841 n t\u7913 c gi\u7853 n quay ph\u7855 t l\u7841 i. Nghi\'eau Xuy\'ean ngay l\u7853 p t\u7913 c b\'e0y ra v\u7867  m\u7863 t v\'f4 t\u7897 i: "N\'e0ng nh\'ecn ta l\'e0m g\'ec? Ta ch\u7881  l\'e0 m\u7897 t c\'f4 h\u7891 n d\'e3 qu\u7927  y\u7871 u \u7899 t... Ch\u7855 c l\'e0 gi\'f3 t\u7921  nhi\'ean th\'f4i... Kh\u7909 c..."</p>\
+                        <p>"B\uc0\u7899 t di\u7877 n s\'e2u \u273 i C\u7889  Nghi\'eau Xuy\'ean. Nh\u7863 t ch\'eca kh\'f3a l\'ean cho t\'f4i, nhanh l\'ean!"</p>\
+                        <p>Nghi\'eau Xuy\'ean nghe v\uc0\u7853 y li\u7873 n kh\u7869  c\u432 \u7901 i. H\u7855 n thong th\u7843  ng\u7891 i d\u7853 y, v\'f2ng hai c\'e1nh tay l\u7841 nh ng\u7855 t qua eo b\u7841 n t\u7915  ph\'eda sau... "Ta kh\'f4ng c\'f3 nh\u7863 t kh\'f4ng c\'f4ng cho ai bao gi\u7901  c\u7843 , phu nh\'e2n \'e0... Hay l\'e0 th\u7871  n\'e0y \u273 i... n\'e0ng h\'f4n ta m\u7897 t c\'e1i, ta li\u7873 n d\'f9ng ch\'fat linh l\u7921 c t\'e0n t\u7841  n\'e0y l\u7845 y ch\'eca kh\'f3a l\'ean cho n\'e0ng."</p>\
+                    </div>\
+                </div>\
+\
+                <!-- Ph\'f3 C\uc0\u7843 nh -->\
+                <div class="char-card">\
+                    <div class="char-title">\
+                        <h2>Ph\'f3 C\uc0\u7843 nh</h2>\
+                    </div>\
+                    <div class="char-tags">\
+                        <span class="tag-label">Tags:</span>\
+                        <span class="tag-item">#B\uc0\u7855 t c\'f3c</span>\
+                        <span class="tag-item">#N\'f4ng phu</span>\
+                        <span class="tag-item">#Gia tr\uc0\u432 \u7903 ng</span>\
+                        <span class="tag-item">#Sizegap</span>\
+                        <span class="tag-item">#BG</span>\
+                    </div>\
+                    \
+                    <button class="btn-read-story" onclick="toggleStory(this)">\
+                        \uc0\u272 \u7885 c c\u7889 t truy\u7879 n <i class="fa-solid fa-chevron-down chevron"></i>\
+                    </button>\
+\
+                    <div class="char-footer">\
+                        <a href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zthm2BydCjPySxdA-S7rPFVtl0Geke4-%22%5D,%22action%22:%22open%22,%22userId%22:%22102315151904679440410%22,%22resourceKeys%22:%7B%7D%7D" target="_blank">\
+                            G\uc0\u7863 p anh C\u7843 nh \u7903  \u273 \'e2yyy \u55356 \u57138 \
+                        </a>\
+                    </div>\
+\
+                    <div class="char-content">\
+                        <p>M\uc0\u7897 t gi\u7901  ba m\u432 \u417 i ph\'fat s\'e1ng.</p>\
+                        <p>Gi\uc0\u7919 a th\'e0nh ph\u7889  r\u7897 ng l\u7899 n, v\'ec g\'e1nh n\u7863 ng c\u417 m \'e1o g\u7841 o ti\u7873 n, \{\{user\}\} m\u7899 i l\'ea b\u432 \u7899 c r\u7901 i kh\u7887 i ch\u7895  l\'e0m \u273 \u7875  tr\u7903  v\u7873  nh\'e0... V\'e0 r\u7891 i, ch\u432 a k\u7883 p c\u7845 t ti\u7871 ng k\'eau c\u7913 u, m\u7897 t c\'e1nh tay to kh\u7887 e v\u432 \u417 n t\u7899 i t\u7915  b\'f3ng t\u7889 i. Chi\u7871 c kh\u259 n t\u7849 m thu\u7889 c m\'ea n\u7891 ng n\u7863 c \u7909 p ch\u7863 t l\u7845 y m\u361 i v\'e0 mi\u7879 ng em.</p>\
+                        <p>Khi t\uc0\u7881 nh l\u7841 i, th\u7871  gi\u7899 i xung quanh ch\u7881  c\'f2n l\'e0 b\'f3ng t\u7889 i ng\u7897 t ng\u7841 t. \{\{user\}\} m\u7899 i nh\u7853 n ra m\'ecnh \u273 ang b\u7883  nh\u7889 t trong m\u7897 t th\'f9ng container k\'edn m\'edt. Quanh em l\'e0 h\u417 n ch\u7909 c c\'f4 g\'e1i tr\u7841 c tu\u7893 i, c\u361 ng trong t\'ecnh tr\u7841 ng tay ch\'e2n b\u7883  tr\'f3i g\'f4.</p>\
+                        <p>K\'e9\'e9\'e9ttt- R\uc0\u7847 m!</p>\
+                        <p>Chi\uc0\u7871 c xe \u273 \u7897 t ng\u7897 t phanh g\u7845 p. Nh\u7919 ng g\'e3 \u273 \'e0n \'f4ng b\u7863 m tr\u7907 n lao l\'ean xe... B\u7885 n bu\'f4n ng\u432 \u7901 i l\'f9a t\u7845 t c\u7843  v\'e0o m\u7897 t c\u259 n nh\'e0 kho l\u7907 p t\'f4n x\u7853 p x\u7879 , h\'f4i h\'e1m m\'f9i ph\'e2n b\'f2.</p>\
+                        <p>V\'e0i ti\uc0\u7871 ng \u273 \u7891 ng h\u7891  sau... M\u7897 t \u273 \'e1m \u273 \'e0n \'f4ng th\'f4 k\u7879 ch tr\'e0n v\'e0o. \{\{user\}\} c\u7889  g\u7855 ng cu\u7897 n tr\'f2n ng\u432 \u7901 i l\u7841 i \u7903  g\'f3c trong c\'f9ng. Nh\u432 ng xui x\u7867 o thay, m\u7897 t l\'e3o gi\'e0 ch\u7841 c s\'e1u m\u432 \u417 i tu\u7893 i, say kh\u432 \u7899 t, b\u432 \u7899 c \u273 i lo\u7841 ng cho\u7841 ng ti\u7871 n v\u7873  ph\'eda g\'f3c c\u7911 a em.</p>\
+                        <p>"Con b\'e9 n\'e0y... Haha... Da d\uc0\u7867  m\u432 \u7899 t m\'e1t qu\'e1... tao mua con n\'e0y v\u7873  \u273 \u7867  con trai..."</p>\
+                        <p>L\'e3o ta nheo con m\uc0\u7855 t k\'e8m nh\'e8m... Nh\u432 ng b\'e0n tay c\u7911 a l\'e3o gi\'e0 ch\u432 a k\u7883 p ch\u7841 m v\'e0o m\u7863 t em th\'ec m\u7897 t b\'f3ng \u273 en kh\u7893 ng l\u7891  \u273 \'e3 l\u7915 ng l\u7919 ng b\u432 \u7899 c t\u7899 i, g\u7841 t ph\u259 ng l\'e3o ra m\u7897 t b\'ean.</p>\
+                        <p>Ph\'f3 C\uc0\u7843 nh \u273 \u7913 ng \u273 \'f3, cao l\u7915 ng l\u7919 ng, th\'e2n h\'ecnh \u273 \u7891  s\u7897  nh\u432  m\u7897 t vi\'ean \u273 \'e1 t\u7843 ng ch\u7855 n tr\u432 \u7899 c m\u7863 t \{\{user\}\}. G\u432 \u417 ng m\u7863 t phong tr\u7847 n, hoang d\'e3 h\u7857 n r\'f5 v\u7871 t s\u7865 o b\'ean m\u7855 t tr\'e1i l\u7847 m l\u7923 , kh\'f4ng ch\'fat c\u7843 m x\'fac.</p>\
+                        <p>"C\'fat ra ch\uc0\u7895  kh\'e1c." Ph\'f3 C\u7843 nh g\u7857 n gi\u7885 ng c\u7897 c l\u7889 c.</p>\
+                        <p>Kh\'f4ng m\uc0\u7897 t \u273 \u7897 ng t\'e1c th\u7915 a, Ph\'f3 C\u7843 nh r\'fat t\u7915  trong t\'fai \'e1o kho\'e1c s\u7901 n c\u361  ra m\u7897 t b\u7885 c nilon b\u7885 c nhi\u7873 u l\u7899 p d\'ednh \u273 \u7847 y b\u7909 i \u273 \'e1 n\'e9m l\'ean b\'e0n: "Hai m\u432 \u417 i v\u7841 n. L\u7845 y ng\u432 \u7901 i n\'e0y."</p>\
+                        <p>Ph\'f3 C\uc0\u7843 nh xoay ng\u432 \u7901 i b\u432 \u7899 c l\u7841 i g\u7847 n \{\{user\}\}... Anh d\u7913 t kho\'e1t r\'fat con dao g\u259 m l\'e1ch nh\u7865  l\u432 \u7905 i dao c\u7855 t \u273 \u7913 t s\u7907 i d\'e2y th\u7915 ng. "\u272 \u7913 ng d\u7853 y."</p>\
+                        <p>Nh\uc0\u432 ng \{\{user\}\} \u273 \'e3 ki\u7879 t s\u7913 c... ng\'e3 khu\u7925 u xu\u7889 ng n\u7873 n \u273 \u7845 t. Kh\'f4ng m\u7897 t ch\'fat ki\'ean nh\u7851 n, Ph\'f3 C\u7843 nh c\'fai g\u7853 p ng\u432 \u7901 i xu\u7889 ng. B\'e0n tay to l\u7899 n, th\'f4 r\'e1p nh\u432  v\u7887  c\'e2y c\u7911 a anh v\u432 \u417 n t\u7899 i, n\u7855 m ch\u7863 t l\u7845 y c\u7857 m em, th\'f4 l\u7895  n\'e2ng m\u7863 t em l\'ean...</p>\
+                        <p>\uc0\u272 \'f4i m\u7855 t \u273 en s\'e2u ho\u7855 m nh\'ecn xo\'e1y th\u7859 ng v\'e0o \u273 \'f4i m\u7855 t \u273 ang \u273 \u7851 m l\u7879  c\u7911 a \{\{user\}\}. Gi\u7885 ng anh \u7891 m \u7891 m vang l\'ean r\'e0nh r\u7885 t t\u7915 ng ch\u7919  m\u7897 t, \u273 \u7847 y t\'ednh tuy\'ean b\u7889  quy\u7873 n s\u7903  h\u7919 u:</p>\
+                        <p>"T\'f4i l\'e0 Ph\'f3 C\uc0\u7843 nh. T\u7915  gi\u7901 , em l\'e0 v\u7907  c\u7911 a t\'f4i."</p>\
+                        <p>D\uc0\u7913 t l\u7901 i, anh th\u7859 ng tay c\u7903 i chi\u7871 c \'e1o kho\'e1c b\'f4ng d\'e0y c\u7897 p qu\u259 ng tr\'f9m l\'ean \u273 \u7847 u \{\{user\}\}... lu\u7891 n c\'e1nh tay v\u7841 m v\u7905  qua eo em, d\'f9ng s\u7913 c nh\u7845 c b\u7893 ng em l\'ean, v\'e1c em n\u7857 m v\u7855 t ngang qua b\u7901  vai v\u7919 ng ch\'e3i c\u7911 a m\'ecnh nh\u432  v\'e1c m\u7897 t bao g\u7895  th\'f4ng \u273 i th\u7859 ng v\'e0o m\'e0n s\u432 \u417 ng m\'f9 \u273 \u7863 c qu\'e1nh.</p>\
+                    </div>\
+                </div>\
+\
+            </div>\
+        </div>\
+\
+        <!-- DANH M\uc0\u7908 C 2: CH\u431 A L\'caN S\'d3NG -->\
+        <div class="category-section" id="chua-len-song-section">\
+            <div class="category-title">\uc0\u55357 \u57313  Ch\u432 a l\'ean s\'f3ng</div>\
+            <div class="char-container">\
+                \
+                <!-- V\uc0\u259 n Du\u7879  Hi\'ean -->\
+                <div class="char-card">\
+                    <div class="char-title">\
+                        <h2>V\uc0\u259 n Du\u7879  Hi\'ean</h2>\
+                    </div>\
+                    <div class="char-tags">\
+                        <span class="tag-label">Tags:</span>\
+                        <span class="tag-item">#Thanh xu\'e2n v\uc0\u432 \u7901 n tr\u432 \u7901 ng</span>\
+                        <span class="tag-item">#Th\'edch th\uc0\u7847 m</span>\
+                        <span class="tag-item">#Slowburn</span>\
+                        <span class="tag-item">#BG</span>\
+                    </div>\
+                    \
+                    <button class="btn-read-story" onclick="toggleStory(this)">\
+                        \uc0\u272 \u7885 c c\u7889 t truy\u7879 n <i class="fa-solid fa-chevron-down chevron"></i>\
+                    </button>\
+\
+                    <div class="char-footer">\
+                        <span>B\'e9 Hi\'ean hi\uc0\u7879 n v\u7855 ng m\u7863 t \u55356 \u57323 </span>\
+                    </div>\
+\
+                    <div class="char-content">\
+                        <p><strong>1.</strong><br>M\'f9a thu n\uc0\u259 m m\u432 \u7901 i l\u259 m tu\u7893 i ch\'eanh chao l\u432 \u7899 t qua nh\u7919 ng t\'e1n x\'e0 c\u7915  c\u7893  th\u7909 ... "R\u7847 m!" Ti\u7871 ng va \u273 \u7853 p \u273 \u7897 t ng\u7897 t c\u7855 t ngang d\'f2ng suy ngh\u297  m\'f4ng lung. M\u7897 t v\'e0i nam sinh b\'e0n \u273 \u7847 u m\u7843 i r\u432 \u7907 t \u273 u\u7893 i nhau, m\u7897 t ng\u432 \u7901 i l\'f9i l\u7841 i qu\'e1 \u273 \'e0 \u273 \'e3 va m\u7841 nh v\'e0o g\'f3c b\'e0n c\u7911 a em l\'e0m \u273 \u7889 ng s\'e1ch v\u7903  ng\u7893 n ngang d\u432 \u7899 i \u273 \u7845 t.</p>\
+                        <p>Ngay khi em \uc0\u273 ang lu\u7889 ng cu\u7889 ng chu\u7849 n b\u7883  c\'fai ng\u432 \u7901 i d\u7885 n d\u7865 p, m\u7897 t b\'f3ng ng\u432 \u7901 i \u273 \'e3 l\u7863 ng l\u7869  b\u432 \u7899 c t\u7899 i. M\u7897 t b\'e0n tay thon d\'e0i, s\u7841 ch s\u7869  d\u7883 u d\'e0ng nh\u7863 t chi\u7871 c b\'fat m\'e1y l\'ean... \u272 \'f3 l\'e0 C\u7889  Nhi\'ean.</p>\
+                        <p>C\uc0\u7853 u kh\u7869  m\u7881 m c\u432 \u7901 i, n\u7909  c\u432 \u7901 i \'f4n h\'f2a nh\u432  l\'e0n gi\'f3: "C\u7853 u c\'f3 sao kh\'f4ng? L\u7899 p m\u7899 i \u273 \u7847 u n\u259 m h\u417 i \u7891 n, c\u7853 u c\u7845 t s\'e1ch v\'e0o ng\u259 n b\'e0n \u273 i..."</p>\
+                        <p>Nh\'ecn c\'e1i t\'ean \uc0\u7845 y, em kh\u7869  m\'edm m\'f4i, l\'f2ng tr\'e0o d\'e2ng m\u7897 t c\u7843 m x\'fac ng\u7885 t ng\'e0o \u273 \u7847 y l\u7841  l\u7851 m.</p>\
+                        <p>\uc0\u8889  \u2282  \u65103 \u55308 \u56989 \u65103 \u55308 \u56449 \u65103 \u8889  \u2282  \u726 </p>\
+                        <p><strong>2.</strong><br>L\uc0\u7899 p h\u7885 c 11/2 \u273 \'f3n nh\u7853 n m\u7897 t h\u7885 c sinh chuy\u7875 n tr\u432 \u7901 ng \u273 \u7863 c bi\u7879 t... \u272 \'f3 l\'e0 V\u259 n Du\u7879  Hi\'ean - k\u7867  m\'e0 ch\u7881  sau m\u7897 t tu\u7847 n \u273 \'e3 nhanh ch\'f3ng ng\u7891 i v\u7919 ng tr\'ean chi\u7871 c gh\u7871  "tr\'f9m tr\u432 \u7901 ng". Gi\'e1o vi\'ean x\u7871 p V\u259 n Du\u7879  Hi\'ean ng\u7891 i \u7903  b\'e0n cu\u7889 i, ngay ph\'eda sau em.</p>\
+                        <p>S\uc0\u7921  xu\u7845 t hi\u7879 n c\u7911 a h\u7855 n khi\u7871 n th\u7871  gi\u7899 i nh\u7887  b\'e9 c\u7911 a em b\u7883  x\'e1o tr\u7897 n. H\u7855 n c\u7897 c l\u7889 c, ngh\u7883 ch ng\u7907 m... Nh\u432 ng t\u7915  l\'fac n\'e0o kh\'f4ng hay, \'e1nh m\u7855 t s\u7855 c l\u7865 m, ngang t\'e0ng c\u7911 a h\u7855 n l\u7841 i \'e2m th\u7847 m kh\'f3a ch\u7863 t tr\'ean b\'f3ng l\u432 ng g\u7847 y gu\u7897 c c\u7911 a n\u7919  sinh b\'e0n tr\'ean.</p>\
+                        <p>M\uc0\u7897 t bu\u7893 i chi\u7873 u m\u432 a t\u7847 m t\'e3, C\u7889  Nhi\'ean chu\u7849 n b\u7883  ra v\u7873 . Em \'f4m chi\u7871 c \'f4 duy nh\u7845 t trong tay, l\u7845 y h\u7871 t can \u273 \u7843 m ch\u7841 y \u273 \u7871 n: "C\u7889  Nhi\'ean... tr\u7901 i m\u432 a to l\u7855 m, c\u7853 u c\u7847 m l\u7845 y \u273 i."</p>\
+                        <p>Th\uc0\u7871  nh\u432 ng, C\u7889  Nhi\'ean l\u7841 i ti\u7879 n tay \u273 \u432 a chi\u7871 c \'f4 \u273 \'f3 cho m\u7897 t n\u7919  sinh kh\'e1c: "T\u7899  \u273 i xe bus n\'ean kh\'f4ng c\u7847 n d\'f9ng, c\u7853 u c\u7847 m l\u7845 y \u273 i."</p>\
+                        <p>\uc0\u272 \'fang l\'fac \u273 \'f3, m\u7897 t b\'e0n tay th\'f4 r\'e1p, \u7845 m n\'f3ng \u273 \u7897 t ng\u7897 t n\u7855 m ch\u7863 t l\u7845 y c\u7893  tay em, th\'f4 b\u7841 o k\'e9o gi\u7853 t em v\u7873  ph\'eda sau. L\'e0 V\u259 n Du\u7879  Hi\'ean.</p>\
+                        <p>"C\uc0\u7853 u b\u7883  \u273 i\u7871 c hay b\u7883  m\'f9 v\u7853 y? Th\u7857 ng kh\u7889 n \u273 \'f3 coi l\'f2ng t\u7889 t c\u7911 a c\u7853 u nh\u432  r\'e1c r\u432 \u7903 i \u273 \u7875  ban ph\'e1t cho \u273 \u7913 a kh\'e1c, v\u7853 y m\'e0 c\u7853 u v\u7851 n m\u7863 t d\'e0y d\'e2ng t\u7853 n tay cho n\'f3?"</p>\
+                        <p>H\uc0\u7855 n \u273 i\'ean ti\u7871 t c\u7903 i ph\u259 ng chi\u7871 c \'e1o kho\'e1c \u273 \u7891 ng ph\u7909 c, th\'f4 l\u7895  tr\'f9m k\'edn l\'ean \u273 \u7847 u em: "C\u7913  kh\'f3c \u273 i! Kh\'f3c m\'f9 m\u7855 t lu\'f4n \u273 i r\u7891 i \'f4ng \u273 \'e2y d\u7855 t c\u7853 u \u273 i l\u7841 i. Ch\u7913  \u273 \u7915 ng \u273 \u7875  th\u7857 ng kh\u7889 n \u273 \'f3 nh\'ecn th\u7845 y b\u7843 n m\u7863 t th\u7843 m h\u7841 i n\'e0y c\u7911 a c\u7853 u!"</p>\
+                        <p>\uc0\u8889  \u2282  \u65103 \u55308 \u56989 \u65103 \u55308 \u56449 \u65103 \u8889  \u2282  \u726 \u8889 </p>\
+                        <p><strong>3.</strong><br>H\uc0\u7897 p s\u7919 a d\'e2u m\'e0 tr\u432 \u7899 c \u273 \'e2y em v\u7851 n th\u432 \u7901 ng v\u7909 ng tr\u7897 m \u273 \u7863 t v\'e0o h\u7897 c b\'e0n c\u7911 a C\u7889  Nhi\'ean, gi\u7901  \u273 \'e2y l\u7841 i lu\'f4n xu\u7845 t hi\u7879 n tr\'ean b\'e0n c\u7911 a em v\'e0o m\u7895 i gi\u7901  ra ch\u417 i. V\u259 n Du\u7879  Hi\'ean v\u7913 t c\u7897 c l\u7889 c h\u7897 p s\u7919 a l\'ean m\u7863 t b\'e0n g\u7895 : "\u272 \'e0n em c\u7911 a t\'f4i mua th\u7915 a, u\u7889 ng \u273 i k\u7867 o ch\u7853 t ch\u7895 ."</p>\
+                        <p>Trong m\uc0\u7897 t ti\u7871 t h\u7885 c t\u297 nh l\u7863 ng v\'e0o bu\u7893 i chi\u7873 u mu\u7897 n, em \u273 \u7855 m ch\'ecm trong d\'e1ng v\u7867  ho\'e0n m\u7929  c\u7911 a C\u7889  Nhi\'ean tr\'ean b\u7909 c gi\u7843 ng. Ph\'eda sau em, V\u259 n Du\u7879  Hi\'ean kh\'f4ng h\u7873  nh\'ecn l\'ean b\u7843 ng \u273 en. H\u7855 n nghi\'eang \u273 \u7847 u g\u7909 c m\u7863 t l\'ean b\'e0n, \u273 \'f4i m\u7855 t \u273 en s\'e2u th\u7859 m ch\u7881  ch\u259 m ch\'fa nh\'ecn v\'e0o b\'f3ng l\u432 ng c\u7911 a em.</p>\
+                        <p>H\uc0\u7855 n ng\u7891 i b\u7853 t d\u7853 y, th\'f4 b\u7841 o x\'e9 m\u7897 t g\'f3c gi\u7845 y nh\'e1p. H\u7855 n g\u7845 p \u273 \'f4i m\u7843 nh gi\u7845 y l\u7841 i, r\u7891 i th\u7843 n nhi\'ean n\'e9m n\'f3 l\'ean m\u7863 t b\'e0n g\u7895  c\u7911 a em. Tr\'ean m\u7843 nh gi\u7845 y nh\u7887  ph\u7859 ng phiu, n\'e9t ch\u7919  ngang t\'e0ng c\u7911 a h\u7855 n hi\u7879 n ra r\'f5 m\u7891 n m\u7897 t:</p>\
+                        <p>"C\uc0\u7843  tr\u432 \u7901 ng n\'e0y kh\'f4ng bi\u7871 t bao nhi\'eau th\u7857 ng con trai.<br>Sao c\u7853 u ch\u7881  th\'edch m\u7895 i c\u7853 u ta?"</p>\
+                    </div>\
+                </div>\
+\
+            </div>\
+        </div>\
+\
+        <!-- DANH M\uc0\u7908 C 3: T\u7840 M C\u7854 T S\'d3NG -->\
+        <div class="category-section" id="tam-cat-song-section">\
+            <div class="category-title">\uc0\u55357 \u56628  T\u7841 m c\u7855 t s\'f3ng</div>\
+            <div class="char-container">\
+                \
+                <!-- D\uc0\u432 \u417 ng Tr\'ec D\'e3 -->\
+                <div class="char-card">\
+                    <div class="char-title">\
+                        <h2>D\uc0\u432 \u417 ng Tr\'ec D\'e3</h2>\
+                    </div>\
+                    <div class="char-tags">\
+                        <span class="tag-label">Tags:</span>\
+                        <span class="tag-item">#Ni\'ean h\uc0\u7841 </span>\
+                        <span class="tag-item">#BG</span>\
+                        <span class="tag-item">#Ch\uc0\u7919 a l\'e0nh</span>\
+                        <span class="tag-item">#C\'fan con</span>\
+                        <span class="tag-item">#Tr\'e0 xanh</span>\
+                    </div>\
+                    \
+                    <button class="btn-read-story" onclick="toggleStory(this)">\
+                        \uc0\u272 \u7885 c c\u7889 t truy\u7879 n <i class="fa-solid fa-chevron-down chevron"></i>\
+                    </button>\
+\
+                    <div class="char-footer">\
+                        <span>B\'e9 D\'e3 hi\uc0\u7879 n \u273 ang \u273 \u432 \u7907 c b\u7843 o tr\'ec... \u55357 \u57056 \u65039 </span>\
+                    </div>\
+\
+                    <div class="char-content">\
+                        <p><strong>\uc0\u55349 \u56893 \u55349 \u56892 \u55349 \u56894 \u55349 \u56902  \u55349 \u56910 \u55349 \u56911 \u55349 \u56906 \u55349 \u56909 \u55349 \u56916 </strong></p>\
+                        <p>Bu\uc0\u7893 i chi\u7873 u cu\u7889 i thu, c\'f4ng vi\'ean ven h\u7891  v\u7855 ng ng\u432 \u7901 i h\u417 n th\u432 \u7901 ng ng\'e0y. Gi\'f3 th\u7893 i t\u7915 ng c\u417 n nh\u7865 , cu\u7889 n theo v\'e0i chi\u7871 c l\'e1 v\'e0ng r\u417 i l\u7843  t\u7843  xu\u7889 ng m\u7863 t n\u432 \u7899 c ph\u7859 ng l\u7863 ng. \{\{user\}\} \u273 i d\u7841 o m\u7897 t m\'ecnh, tay c\u7847 m ly c\'e0 ph\'ea \u273 \'e3 ngu\u7897 i t\u7915  l\'e2u, ch\u7881  l\'e0 c\'e1i c\u7899  \u273 \u7875  c\'f3 ch\u7895  b\'e1m v\'e0o trong nh\u7919 ng bu\u7893 i chi\u7873 u r\u7843 nh r\u7895 i m\'e0 c\'f4 kh\'f4ng bi\u7871 t ph\u7843 i l\'e0m g\'ec v\u7899 i ch\'ednh m\'ecnh.</p>\
+                        <p>N\uc0\u7917 a n\u259 m r\u7891 i.<br>N\u7917 a n\u259 m k\u7875  t\u7915  ng\'e0y c\'f4 v\'e0 T\u7915  Chi\'eau c\'e3i nhau l\u7847 n cu\u7889 i, n\u7917 a n\u259 m c\'f4 d\u7885 n v\u7873  nh\'e0 b\u7889  m\u7865 , \u273 \u7875  l\u7841 i c\u259 n nh\'e0 ri\'eang cho m\u7897 t m\'ecnh h\u7855 n ra v\'e0o. C\'f4 kh\'f4ng g\u7885 i, h\u7855 n c\u361 ng kh\'f4ng g\u7885 i. C\u7913  nh\u432  hai ng\u432 \u7901 i xa l\u7841 , ch\u7881  c\'f2n l\u7841 i t\u7901  gi\u7845 y \u273 \u259 ng k\'fd k\u7871 t h\'f4n v\u7851 n ch\u432 a ai ch\u7883 u k\'fd t\'ean \u273 \u7875  h\u7911 y.</p>\
+                        <p>C\'f4 t\uc0\u432 \u7903 ng m\'ecnh \u273 \'e3 quen v\u7899 i vi\u7879 c \u273 \'f3. Cho \u273 \u7871 n khi c\'f4 nh\'ecn th\u7845 y h\u7855 n.</p>\
+                        <p>T\uc0\u7915  Chi\'eau \u273 \u7913 ng c\'e1ch c\'f4 ch\u7881  ch\u7915 ng hai m\u432 \u417 i b\u432 \u7899 c, m\u7897 t tay \u273 \u7849 y chi\u7871 c xe \u273 \u7849 y tr\u7867  em m\'e0u xanh nh\u7841 t, d\'e1ng v\u7867  c\'f3 ch\'fat l\'f3ng ng\'f3ng nh\u432  ch\u432 a quen v\u7899 i vi\u7879 c n\'e0y. Trong xe l\'e0 m\u7897 t \u273 \u7913 a b\'e9 kho\u7843 ng s\'e1u th\'e1ng tu\u7893 i, \u273 ang ng\u7911  ngon l\'e0nh, hai m\'e1 ph\'fang ph\'ednh \u273 \u7887  h\u7891 ng v\'ec gi\'f3 l\u7841 nh.</p>\
+                        <p>Tay c\'f4 si\uc0\u7871 t ch\u7863 t ly c\'e0 ph\'ea \u273 \u7871 n m\u7913 c su\'fdt l\'e0m v\u7905  l\u7899 p nh\u7921 a m\u7887 ng.<br>"T\u7915  Chi\'eau..." Gi\u7885 ng c\'f4 kh\'f4 kh\u7889 c, g\u7847 n nh\u432  kh\'f4ng ph\'e1t ra \u273 \u432 \u7907 c th\'e0nh ti\u7871 ng.</p>\
+                        <p>H\uc0\u7855 n gi\u7853 t m\'ecnh quay l\u7841 i, s\u7855 c m\u7863 t tr\u7855 ng b\u7879 ch \u273 i trong t\'edch t\u7855 c. "\{\{user\}\} t\u7915  t\u7915  \u273 \'e3... nghe... nghe anh gi\u7843 i th\'edch."</p>\
+                        <p>Ngay l\'fac \uc0\u273 \'f3, m\u7897 t b\'f3ng ng\u432 \u7901 i kh\'e1c xu\u7845 t hi\u7879 n t\u7915  ph\'eda sau g\u7889 c c\'e2y, d\'e1ng \u273 i \u7869 o \u7865 o, tay kho\'e1c h\u7901  l\u7845 y c\'e1nh tay T\u7915  Chi\'eau m\u7897 t c\'e1ch t\u7921  nhi\'ean \u273 \u7871 n ph\'e1t t\u7913 c.<br>"\'d4i, \{\{user\}\}~" \'d4n Nh\u432 \u7907 c Tuy\u7871 t k\'e9o d\'e0i gi\u7885 ng, m\'f4i cong l\'ean m\u7897 t n\u7909  c\u432 \u7901 i kh\'f4ng gi\u7845 u gi\u7871 m s\u7921  \u273 \u7855 c \'fd. "Sao nay g\u7863 p em \u7903  \u273 \'e2y v\u7853 y? Th\u7853 t l\'e0... tr\'f9ng h\u7907 p gh\'ea."</p>\
+                        <p>\{\{user\}\} kh\'f4ng n\'f3i g\'ec. C\'f4 ch\uc0\u7881  \u273 \u7913 ng \u273 \'f3, m\u7855 t d\'e1n v\'e0o \u273 \u7913 a tr\u7867  trong xe, r\u7891 i d\u7847 n d\u7847 n d\u7883 ch sang khu\'f4n m\u7863 t \u273 ang t\'e1i nh\u7907 t c\u7911 a T\u7915  Chi\'eau.</p>\
+                        <p>CH\'c1T!!<br>\'c2m thanh gi\'f2n tan vang l\'ean gi\uc0\u7919 a kh\'f4ng gian t\u297 nh l\u7863 ng c\u7911 a c\'f4ng vi\'ean. M\u7897 t v\u7871 t l\u7857 n n\u259 m ng\'f3n tay \u273 \u7887  ch\'f3t hi\u7879 n r\'f5 tr\'ean g\'f2 m\'e1 h\u7855 n.</p>\
+                        <p>"Anh kh\'f4ng c\uc0\u7847 n gi\u7843 i th\'edch \u273 \'e2u." C\'f4 nh\'ecn th\u7859 ng v\'e0o h\u7855 n, kh\'f4ng m\u7897 t ch\'fat n\'e9 tr\'e1nh. "T\u7915  nay v\u7873  sau, t\'f4i v\'e0 anh kh\'f4ng c\'f2n li\'ean quan g\'ec v\u7899 i nhau n\u7919 a. Gi\u7845 y hu\u7927  b\u7887  h\'f4n \u432 \u7899 c, t\'f4i s\u7869  g\u7917 i cho anh sau."</p>\
+                        <p>N\'f3i xong, c\'f4 th\'e1o chi\uc0\u7871 c nh\u7851 n c\u432 \u7899 i ra kh\u7887 i ng\'f3n \'e1p \'fat m\u7897 t c\'e1ch d\u7913 t kho\'e1t... v\u7913 t th\u7859 ng xu\u7889 ng ven h\u7891 , ch\'ecm v\'e0o m\u7863 t n\u432 \u7899 c kh\'f4ng m\u7897 t ti\u7871 ng \u273 \u7897 ng l\u7899 n.</p>\
+                        <p>......</p>\
+                        <p><strong>\uc0\u55349 \u56897 \u55349 \u56900 \u55349 \u56909 \u55349 \u56910 \u55349 \u56911  \u55349 \u56904 \u55349 \u56896 \u55349 \u56910 \u55349 \u56910 \u55349 \u56896 \u55349 \u56905 \u55349 \u56898 \u55349 \u56896 \u55349 \u56909 </strong></p>\
+                        <p>Qu\'e1n bar Haley - n\uc0\u417 i s\u7847 m u\u7845 t nh\u7845 t th\'e0nh ph\u7889  A. Nh\u432 ng \u7903  m\u7897 t g\'f3c b\'e0n VIP, kh\'f4ng kh\'ed l\u7841 i tr\u7847 m xu\u7889 ng h\u7859 n.<br>\{\{user\}\} ng\u7891 i \u273 \'f3 \u273 \'e3 h\u417 n m\u7897 t gi\u7901 , tr\u432 \u7899 c m\u7863 t l\'e0 d\'e3y ly r\u432 \u7907 u r\u7895 ng x\u7871 p th\'e0nh h\'e0ng d\'e0i.</p>\
+                        <p>"Cho t\'f4i... th\'eam 10 chai r\uc0\u432 \u7907 u m\u7841 nh nh\u7845 t ra \u273 \'e2y..." C\'f4 v\u7851 y tay g\u7885 i nh\'e2n vi\'ean, gi\u7885 ng \u273 \'e3 l\'e8 nh\'e8.<br>"Mang... mang em trai \u273 \u7865 p trai nh\u7845 t qu\'e1n ra \u273 \'e2y... Ngon nh\u7845 t qu\'e1n \u7845 y... t\'f4i c\'f3 ti\u7873 n..."</p>\
+                        <p>Qu\uc0\u7843 n l\'fd qu\'e1n v\u7895  vai m\u7897 t thanh ni\'ean \u273 ang \u273 \u7913 ng t\u7921 a qu\u7847 y bar: "Tr\'ec D\'e3, \u273 \u7871 n b\'e0n VIP s\u7889  3 \u273 i." \u272 \'f3 l\'e0 D\u432 \u417 ng Tr\'ec D\'e3 - '\u273 \'e0o' hot nh\u7845 t c\u7911 a bar.</p>\
+                        <p>"Ch\uc0\u7883  g\u7885 i ng\u432 \u7901 i \u273 \u7865 p trai nh\u7845 t \'e0?" C\u7853 u ng\u7891 i xu\u7889 ng \u273 \u7889 i di\u7879 n v\u7899 i \{\{user\}\}, gi\u7885 ng nh\u7865  nh\'e0ng. "V\u7853 y ch\u7883  nh\'ecn l\u7847 m ng\u432 \u7901 i r\u7891 i, v\'ec em kh\'f4ng ch\u7881  \u273 \u7865 p m\'e0 c\'f2n bi\u7871 t l\u7855 ng nghe n\u7919 a \u273 \'f3."</p>\
+                        <p>"C\uc0\u7853 u... th\'ec bi\u7871 t c\'e1i g\'ec ch\u7913 ..." C\'f4 l\u7855 p b\u7855 p, tay v\u7851 n c\'f2n run, c\u7889  n\'e2ng ly r\u432 \u7907 u l\'ean nh\u432 ng y\u7871 u \u273 \u7871 n m\u7913 c su\'fdt l\'e0m \u273 \u7893 .</p>\
+                        <p>D\uc0\u432 \u417 ng Tr\'ec D\'e3 nhanh tay \u273 \u7905  l\u7845 y ly r\u432 \u7907 u, thay v\'e0o \u273 \'f3 l\'e0 m\u7897 t ly n\u432 \u7899 c l\u7885 c. "Ch\u7883  u\u7889 ng c\'e1i n\'e0y tr\u432 \u7899 c \u273 i... Em s\u7869  u\u7889 ng c\'f9ng ch\u7883 . M\u432 \u7901 i chai r\u432 \u7907 u m\u7841 nh ch\u7883  g\u7885 i, em kh\'f4ng c\u7843 n ch\u7883  u\u7889 ng \u273 \'e2u, nh\u432 ng \u273 \u7875  t\u7915  t\u7915 , em s\u7869  d\'e0nh c\u7843  \u273 \'eam nay b\u7847 u b\u7841 n v\u7899 i ch\u7883 , kh\'f4ng v\u7897 i."</p>\
+                    </div>\
+                </div>\
+\
+            </div>\
+        </div>\
+\
+    </div>\
+\
+    <script>\
+        let currentSelectedTag = 'T\uc0\u7845 t c\u7843 ';\
+        let currentSearchQuery = '';\
+\
+        // H\'e0m chuy\uc0\u7875 n \u273 \u7893 i t\u7915  trang 1 sang trang 2\
+        function checkIn() \{\
+            document.getElementById('page-1').style.opacity = '0';\
+            setTimeout(() => \{\
+                document.getElementById('page-1').style.display = 'none';\
+                document.getElementById('page-2').style.display = 'block';\
+                window.scrollTo(0, 0); \
+            \}, 500); \
+        \}\
+\
+        // H\'e0m m\uc0\u7903 /\u273 \'f3ng c\u7889 t truy\u7879 n b\u7857 ng n\'fat "\u272 \u7885 c c\u7889 t truy\u7879 n"\
+        function toggleStory(button) \{\
+            const card = button.closest('.char-card');\
+            const content = card.querySelector('.char-content');\
+            \
+            card.classList.toggle('active');\
+            \
+            if (content.style.display === 'block') \{\
+                content.style.display = 'none';\
+            \} else \{\
+                content.style.display = 'block';\
+            \}\
+        \}\
+\
+        // H\'e0m click ch\uc0\u7885 n Tag nhanh\
+        function filterByTag(btnElement, tag) \{\
+            // \uc0\u272 \u7893 i tr\u7841 ng th\'e1i hi\u7875 n th\u7883  c\u7911 a c\'e1c n\'fat Tag\
+            document.querySelectorAll('.filter-tag-btn').forEach(btn => \{\
+                btn.classList.remove('active');\
+            \});\
+            btnElement.classList.add('active');\
+\
+            currentSelectedTag = tag;\
+            applyAllFilters();\
+        \}\
+\
+        // H\'e0m nh\uc0\u7853 p th\'f4ng tin t\'ecm ki\u7871 m\
+        function filterCharacters() \{\
+            currentSearchQuery = document.getElementById('search-input').value.toLowerCase();\
+            applyAllFilters();\
+        \}\
+\
+        // H\'e0m \'e1p d\uc0\u7909 ng \u273 \u7891 ng th\u7901 i c\u7843  B\u7897  l\u7885 c Tag v\'e0 \'d4 t\'ecm ki\u7871 m\
+        function applyAllFilters() \{\
+            const sections = document.querySelectorAll('.category-section');\
+\
+            sections.forEach(section => \{\
+                const cards = section.querySelectorAll('.char-card');\
+                let visibleCardsInSection = 0;\
+\
+                cards.forEach(card => \{\
+                    const name = card.querySelector('h2').innerText.toLowerCase();\
+                    const tagsText = card.querySelector('.char-tags').innerText.toLowerCase();\
+\
+                    // Ki\uc0\u7875 m tra xem card c\'f3 ch\u7913 a v\u259 n b\u7843 n t\'ecm ki\u7871 m kh\'f4ng\
+                    const matchesSearch = name.includes(currentSearchQuery) || tagsText.includes(currentSearchQuery);\
+\
+                    // Ki\uc0\u7875 m tra xem card c\'f3 ch\u7913 a Tag \u273 ang ch\u7885 n kh\'f4ng\
+                    const matchesTag = (currentSelectedTag === 'T\uc0\u7845 t c\u7843 ') || tagsText.includes(currentSelectedTag.toLowerCase());\
+\
+                    // N\uc0\u7871 u th\u7887 a m\'e3n c\u7843  2 \u273 i\u7873 u ki\u7879 n th\'ec hi\u7875 n th\u7883 \
+                    if (matchesSearch && matchesTag) \{\
+                        card.style.display = 'flex';\
+                        visibleCardsInSection++;\
+                    \} else \{\
+                        card.style.display = 'none';\
+                    \}\
+                \});\
+\
+                // N\uc0\u7871 u trong danh m\u7909 c \u273 \'f3 kh\'f4ng c\'f3 nh\'e2n v\u7853 t n\'e0o ph\'f9 h\u7907 p b\u7897  l\u7885 c, \u7849 n lu\'f4n ti\'eau \u273 \u7873  danh m\u7909 c \u273 \'f3\
+                if (visibleCardsInSection > 0) \{\
+                    section.style.display = 'block';\
+                \} else \{\
+                    section.style.display = 'none';\
+                \}\
+            \});\
+        \}\
+    </script>\
+</body>\
+</html>}
