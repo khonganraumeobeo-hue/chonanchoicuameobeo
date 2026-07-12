@@ -896,10 +896,10 @@
 
                     <div class="char-content">
                         <p><strong>1.</strong><br>Mùa thu năm mười lăm tuổi chênh chao lướt qua những tán xà cừ cổ thụ... "Rầm!" Tiếng va đập đột ngột cắt ngang dòng suy nghĩ mông lung. Một vài nam sinh bàn đầu mải rượt đuổi nhau, một người lùi lại quá đà đã va mạnh vào góc bàn của em làm đống sách vở ngổn ngang dưới đất.</p>
-                        <p>Ngay khi em đang luống cuống chuẩn bị cúi người dọn dẹp, một bóng người đã lặng lẽ bước tới. Một bàn tay thon dài, sạch sử dịu dàng nhặt chiếc bút máy lên... Đó là Cố Nhiên.</p>
+                        <p>Ngay khi em đang luống cuống chuẩn bị cúi người dọn dẹp, một bóng người đã lặng lẽ bước tới. Một bàn tay thon dài, sạch sẽ dịu dàng nhặt chiếc bút máy lên... Đó là Cố Nhiên.</p>
                         <p>Cậu khẽ mỉm cười, nụ cười ôn hòa như làn gió: "Cậu có sao không? Lớp mới đầu năm hơi ồn, cậu cất sách vào ngăn bàn đi..."</p>
                         <p>Nhìn cái tên ấy, em khẽ mím môi, lòng trào dâng một cảm xúc ngọt ngào đầy lạ lẫm.</p>
-                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖</p>
+                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖#</p>
                         <p><strong>2.</strong><br>Lớp học 11/2 đón nhận một học sinh chuyển trường đặc biệt... Đó là Văn Duệ Hiên - kẻ mà chỉ sau một tuần đã nhanh chóng ngồi vững trên chiếc ghế "trùm trường". Giáo viên xếp Văn Duệ Hiên ngồi ở bàn cuối, ngay phía sau em.</p>
                         <p>Sự xuất hiện của hắn khiến thế giới nhỏ bé của em bị xáo trộn. Hắn cộc lốc, nghịch ngợm... Nhưng từ lúc nào không hay, ánh mắt sắc lẹm, ngang tàng của hắn lại âm thầm khóa chặt trên bóng lưng gầy guộc của nữ sinh bàn trên.</p>
                         <p>Một buổi chiều mưa tầm tã, Cố Nhiên chuẩn bị ra về. Em ôm chiếc ô duy nhất trong tay, lấy hết can đảm chạy đến: "Cố Nhiên... trời mưa to lắm, cậu cầm lấy đi."</p>
@@ -959,7 +959,7 @@
                         <p>"Anh không cần giải thích đâu." Cô nhìn thẳng vào hắn, không một chút né tránh. "Từ nay về sau, tôi và anh không còn liên quan gì với nhau nữa. Giấy huỷ bỏ hôn ước, tôi sẽ gửi cho anh sau."</p>
                         <p>Nói xong, cô tháo chiếc nhẫn cưới ra khỏi ngón áp út một cách dứt khoát... vứt thẳng xuống ven hồ, chìm vào mặt nước không một tiếng động lớn.</p>
                         <p>......</p>
-                        <p><strong>𝙁𝙄𝙍𝙎𝙏 𝙈𝙀𝙎𝙎Ê𝙉𝙂𝙀Ｒ</strong></p>
+                        <p><strong>𝙁𝙄𝙍𝙎𝙏 𝙈𝙀𝙎processingÊ𝙉𝙂𝙀Ｒ</strong></p>
                         <p>Quán bar Haley - nơi sầm uất nhất thành phố A. Nhưng ở một góc bàn VIP, không khí lại trầm xuống hẳn.<br>{{user}} ngồi đó đã hơn một giờ, trước mặt là dãy ly rượu rỗng xếp thành hàng dài.</p>
                         <p>"Cho tôi... thêm 10 chai rượu mạnh nhất ra đây..." Cô vẫy tay gọi nhân viên, giọng đã lè nhè.<br>"Mang... mang em trai đẹp trai nhất quán ra đây... Ngon nhất quán ấy... tôi có tiền..."</p>
                         <p>Quản lý quán vỗ vai một thanh niên đang đứng tựa quầy bar: "Trì Dã, đến bàn VIP số 3 đi." Đó là Dương Trì Dã - 'đào' hot nhất của bar.</p>
@@ -1357,6 +1357,9 @@
                 if (savedUnlocked !== null) {
                     try {
                         unlockedCharacters = JSON.parse(savedUnlocked);
+                        if (!Array.isArray(unlockedCharacters)) {
+                            unlockedCharacters = [];
+                        }
                     } catch (e) {
                         unlockedCharacters = [];
                     }
@@ -1536,7 +1539,7 @@
             }
         }
 
-        // Tự động kiểm tra tags, nếu đã mở khóa bằng cách đổi cá thì lưu vĩnh viễn
+        // Tự động kiểm tra tags, hiển thị nút nhận nuôi hoặc thông báo cần tích thêm 🐟
         function updateLockedLinks() {
             const cards = document.querySelectorAll('.char-card');
             cards.forEach(card => {
@@ -1554,7 +1557,8 @@
                     return;
                 }
 
-                const tagsText = card.querySelector('.char-tags').innerText;
+                // KHẮP PHỤC LỖI TRÊN DI ĐỘNG: Thay thế .innerText bằng .textContent an toàn cao
+                const tagsText = card.querySelector('.char-tags').textContent;
                 const isSpecial = tagsText.includes('#18+') || tagsText.includes('#21+');
                 const requiredFishes = isSpecial ? 50 : 10; // Thay đổi mốc cá thường thành 10 cá
 
@@ -1589,16 +1593,32 @@
 
         // --- LOGIC GIAO DIỆN WEB ---
 
-        // Khởi động an toàn đồ họa của Game
+        // Khởi động an toàn đồ họa của Game (Bọc khối try...catch để dù đồ họa hay localstorage có bị trình duyệt chặn, trang 2 vẫn load 100%)
         function initGame() {
-            canvas = document.getElementById('game-canvas');
-            if (canvas && !ctx) {
-                ctx = canvas.getContext('2d');
-                ctx.imageSmoothingEnabled = false;
-                
-                loadGameData(); // Khôi phục dữ liệu game cũ nếu có
+            try {
+                canvas = document.getElementById('game-canvas');
+                if (canvas && !ctx) {
+                    ctx = canvas.getContext('2d');
+                    if (ctx) {
+                        // Vá lỗi mờ pixel cho mọi dòng máy di động
+                        if ('imageSmoothingEnabled' in ctx) {
+                            ctx.imageSmoothingEnabled = false;
+                        } else if ('webkitImageSmoothingEnabled' in ctx) {
+                            ctx.webkitImageSmoothingEnabled = false;
+                        } else if ('mozImageSmoothingEnabled' in ctx) {
+                            ctx.mozImageSmoothingEnabled = false;
+                        }
+                        
+                        loadGameData(); // Khôi phục dữ liệu game cũ nếu có
+                        updateGameUI();
+                        gameLoop(); // Chỉ khởi chạy vòng lặp Canvas vẽ đồ họa khi trang 2 đã hiển thị
+                    }
+                }
+            } catch (err) {
+                console.log("Canvas initialization failed, falling back to standard view: ", err);
+                // Cập nhật giao diện thông số kể cả khi đồ họa canvas bị trình duyệt chặn
+                loadGameData();
                 updateGameUI();
-                gameLoop(); // Chỉ khởi chạy vòng lặp Canvas vẽ đồ họa khi trang 2 đã hiển thị
             }
         }
 
@@ -1657,7 +1677,7 @@
             applyAllFilters();
         }
 
-        // Hàm áp dụng đồng thời cả Bộ lọc Tag và Ô tìm kiếm
+        // Hàm áp dụng đồng thời cả Bộ lọc Tag và Ô tìm kiếm (Thay thế .innerText bằng .textContent an toàn)
         function applyAllFilters() {
             const sections = document.querySelectorAll('.category-section');
 
@@ -1666,8 +1686,8 @@
                 let visibleCardsInSection = 0;
 
                 cards.forEach(card => {
-                    const name = card.querySelector('h2').innerText.toLowerCase();
-                    const tagsText = card.querySelector('.char-tags').innerText.toLowerCase();
+                    const name = card.querySelector('h2').textContent.toLowerCase();
+                    const tagsText = card.querySelector('.char-tags').textContent.toLowerCase();
 
                     const matchesSearch = name.includes(currentSearchQuery) || tagsText.includes(currentSearchQuery);
                     const matchesTag = (currentSelectedTag === 'Tất cả') || tagsText.includes(currentSelectedTag.toLowerCase());
