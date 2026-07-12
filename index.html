@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chốn ăn chơi của Mèo béo</title>
+    <!-- Thêm phông chữ Quicksand dễ thương từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome cho Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --pastel-yellow: #FFFACD;
+            --lemon-yellow: #FFF44F;
+            --text-color: #5D4037;
+            --white-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--pastel-yellow);
+            background-image: radial-gradient(#FFF44F 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- STICKERS (Trang trí) --- */
+        .sticker {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: 0;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.8;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .s1 { top: 10%; left: 8%; animation-delay: 0s; }
+        .s2 { top: 25%; right: 12%; font-size: 3.5rem; animation-delay: 1s; }
+        .s3 { bottom: 15%; left: 15%; font-size: 3rem; animation-delay: 2s; }
+        .s4 { bottom: 10%; right: 8%; animation-delay: 0.5s; }
+
+        /* --- PAGE 1: NHẬN PHÒNG --- */
+        #page-1 {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-box {
+            background: var(--white-bg);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            border: 3px dashed var(--lemon-yellow);
+            max-width: 600px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #d4a017;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .btn-checkin {
+            background-color: var(--lemon-yellow);
+            color: var(--text-color);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: inherit;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .btn-checkin:hover {
+            transform: scale(1.05);
+            background-color: #ffe033;
+        }
+
+        /* KHUNG HÌNH CHỮ NHẬT BO TRÒN LIÊN KẾT */
+        .social-box {
+            display: inline-flex;
+            gap: 25px;
+            border: 2px solid var(--lemon-yellow);
+            background-color: #fffdf0;
+            padding: 12px 25px;
+            border-radius: 15px; /* Khung hình chữ nhật tròn */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-box a, .social-box span {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .social-box a:hover {
+            color: #1877F2;
+        }
+
+        .social-box span:hover {
+            color: #5865F2;
+        }
+
+        /* --- POPUP GIỚI THIỆU (WELCOME MODAL) --- */
+        .intro-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(93, 64, 55, 0.45); /* Làm mờ màu nâu retro */
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .intro-modal-content {
+            background: var(--white-bg);
+            border: 4px solid var(--text-color);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 520px;
+            width: 95%;
+            position: relative;
+            box-shadow: 0 10px 0 var(--text-color);
+            text-align: center;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff8a80;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 0 var(--text-color);
+            transition: all 0.1s;
+        }
+        .close-modal-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .intro-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4a017;
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+
+        .intro-text-body {
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .intro-text-body p {
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        /* --- PAGE 2: TỔNG HỢP CHARACTER --- */
+        #page-2 {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-page-2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* --- MINIGAME CÂU CÁ (PIXEL CHUẨN) --- */
+        .retro-game-box {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background: #fffdf2;
+            border: 4px solid var(--text-color);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 0 var(--text-color);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: 0;
+            color: var(--text-color);
+            border-bottom: 2px dashed var(--text-color);
+            padding-bottom: 10px;
+        }
+
+        .game-body {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 730px) {
+            .game-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Canvas Game màn hình pixel */
+        #game-canvas {
+            background-color: #b3e5fc;
+            border: 3.5px solid var(--text-color);
+            border-radius: 12px;
+            width: 100%;
+            height: 220px;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            display: block;
+        }
+
+        /* Hiển thị câu thoại thông báo dưới canvas */
+        .game-status-text {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin: 10px 0 0 0;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        /* Khu vực thông số & Cửa hàng */
+        .game-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .game-inventory {
+            background: #fffde7;
+            border: 2px solid var(--text-color);
+            border-radius: 10px;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .inv-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .game-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .game-btn {
+            flex: 1;
+            padding: 12px;
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 2px solid var(--text-color);
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 var(--text-color);
+            transition: all 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .game-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .btn-fish {
+            background-color: #6ee7b7;
+        }
+        .btn-plant {
+            background-color: #fbcfe8;
+        }
+
+        /* Cửa hàng cần câu */
+        .game-shop {
+            border: 2px dashed var(--text-color);
+            border-radius: 10px;
+            padding: 12px;
+            background: #fff;
+        }
+
+        .shop-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .shop-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .shop-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .shop-row:last-child {
+            border: none;
+        }
+
+        .btn-buy {
+            background-color: var(--lemon-yellow);
+            border: 1.5px solid var(--text-color);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 2px 0 var(--text-color);
+        }
+        .btn-buy:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        /* --- HẾT PHẦN GAME --- */
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        #search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            border: 2px solid var(--lemon-yellow);
+            border-radius: 50px;
+            outline: none;
+            background: var(--white-bg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
+        }
+        #search-input:focus {
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* KHUNG CHỌN TAGS */
+        .tag-filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            padding: 20px;
+            background: var(--white-bg);
+            border: 2.5px solid var(--lemon-yellow);
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.15);
+        }
+
+        .filter-tag-btn {
+            background-color: var(--pastel-yellow);
+            border: 1.5px solid #ffe033;
+            border-radius: 20px;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+
+        .filter-tag-btn:hover, .filter-tag-btn.active {
+            background-color: var(--lemon-yellow);
+            border-color: #ffd54f;
+            transform: scale(1.05);
+            box-shadow: 0 3px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* PHÂN CHIA DANH MỤC TRẠNG THÁI */
+        .category-section {
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4a017;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px dashed var(--lemon-yellow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARD GRID LAYOUT */
+        .char-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+
+        .char-card {
+            background: var(--white-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--lemon-yellow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .char-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .char-title h2 {
+            margin: 0 0 10px 0;
+            color: #d4a017;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        /* STYLE TAGS CHỨA HASHTAG */
+        .char-tags {
+            font-size: 0.9rem;
+            color: #8d6e63;
+            margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .char-tags span.tag-label {
+            color: #8d6e63;
+            font-weight: 700;
+        }
+
+        .char-tags span.tag-item {
+            background-color: #fffde7;
+            border: 1px solid #ffd54f;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #795548;
+        }
+
+        .btn-read-story {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--pastel-yellow);
+            color: var(--text-color);
+            border: 2px solid var(--lemon-yellow);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        .btn-read-story:hover {
+            background-color: var(--lemon-yellow);
+        }
+
+        .btn-read-story .chevron {
+            transition: transform 0.3s;
+        }
+        .char-card.active .btn-read-story .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* MỤC LIÊN KẾT / TRẠNG THÁI (HIỆN NGAY DƯỚI NÚT ĐỌC CỐT TRUYỆN) */
+        .char-footer {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            background-color: var(--lemon-yellow);
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            width: calc(100% - 30px);
+            align-self: center;
+        }
+        
+        .char-footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .char-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .char-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #d4a017;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .char-content p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stickers -->
+    <div class="sticker s1">🍋</div>
+    <div class="sticker s2">🐱</div>
+    <div class="sticker s3">🐾</div>
+    <div class="sticker s4">✨</div>
+
+    <!-- PAGE 1: Landing Page -->
+    <div id="page-1">
+        <div class="welcome-box">
+            <h1>Chào mừng đến với Chốn ăn chơi của Mèo béo 🐱✨</h1>
+            <button class="btn-checkin" onclick="checkIn()">Nhận phòng 🗝️</button>
+            
+            <!-- Khung hình chữ nhật tròn liên kết -->
+            <div class="social-box">
+                <a href="https://www.facebook.com/share/18pLw4ChMK/?mibextid=wwXIfr" target="_blank">
+                    <i class="fa-brands fa-facebook" style="color: #1877F2;"></i> facebook
+                </a>
+                <span>
+                    <i class="fa-brands fa-discord" style="color: #5865F2;"></i> pmeojuanh_
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP GIỚI THIỆU (WELCOME MODAL) -->
+    <div class="intro-modal" id="intro-modal">
+        <div class="intro-modal-content">
+            <button class="close-modal-btn" onclick="closeIntroModal()">X</button>
+            <p class="intro-title">🌟 WELCOME 🌟</p>
+            <div class="intro-text-body">
+                <p>🐱 Đây là nơi tổng hợp bé iu của Mèo béo.</p>
+                <p>🎣 Mọi người cần câu đủ 10 🐟 để có thể gặp mặt bé iu.</p>
+                <p>🔥 Còn đối với những bé iu có #18+ hoặc #21+ thì cần 50 🐟 nha!</p>
+                <p>📝 <strong>Note:</strong> Link các bé iu không có hai tags trên, mình vẫn sẽ public trên page nha!</p>
+                <p>💖 Chúc mọi người chơi vui vẻ!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Character List -->
+    <div id="page-2">
+        <div class="header-page-2">
+            <h1>Tủ Hồ Sơ Nhân Vật 🎀</h1>
+        </div>
+
+        <!-- MINIGAME CÂU CÁ chuẩn pixel art -->
+        <div class="retro-game-box">
+            <p class="game-title">🎣 TIỆM CÂU CÁ MÈO BÉO</p>
+            
+            <div class="game-body">
+                <!-- Cột trái: Màn hình Canvas vẽ Pixel Art và Thẻ thông báo text -->
+                <div>
+                    <canvas id="game-canvas" width="240" height="135"></canvas>
+                    <!-- THẺ THÔNG BÁO TEXT TRÒ CHƠI -->
+                    <p class="game-status-text" id="game-status">Bấm "Thả câu" để bắt đầu câu cá!</p>
+                </div>
+
+                <!-- Cột phải: Thông số, nút hành động & Cửa hàng -->
+                <div class="game-dashboard">
+                    <!-- Kho chứa thông số -->
+                    <div class="game-inventory">
+                        <div class="inv-item">💰 Xu: <span id="game-coins">20</span></div>
+                        <div class="inv-item">🐟 Đã câu: <span id="game-fishes">0</span></div>
+                        <div class="inv-item" style="grid-column: span 2;">🎣 Cần: <span id="game-active-rod">Cần câu tre</span></div>
+                    </div>
+
+                    <!-- Nút hành động chính -->
+                    <div class="game-actions">
+                        <button class="game-btn btn-fish" id="btn-cast-action" onclick="startFishing()">Thả câu 🎣</button>
+                        <button class="game-btn btn-plant" id="btn-plant-action" onclick="handlePlanting()">Gieo hạt hoa 🌱</button>
+                    </div>
+
+                    <!-- Cửa hàng mua cần câu -->
+                    <div class="game-shop">
+                        <div class="shop-title">🏪 Tiệm cần câu:</div>
+                        <div class="shop-items">
+                            <div class="shop-row">
+                                <span>🎣 Cần câu tre (Dễ đứt)</span>
+                                <button class="btn-buy" onclick="buyRod('Cần câu tre', 10)">10 Xu</button>
+                            </div>
+                            <div class="shop-row">
+                                <span>🎣 Cần câu sắt (Bền vừa)</span>
+                                <button class="btn-buy" onclick="buyRod('Cần câu sắt', 50)">50 Xu</button>
+                            </div>
+                            <div class="shop-row">
+                                <span>🎣 Cần câu kim cương (Siêu bền)</span>
+                                <button class="btn-buy" onclick="buyRod('Cần câu kim cương', 150)">150 Xu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mục tìm kiếm bằng văn bản -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Tìm kiếm theo tên nhân vật, tags..." onkeyup="filterCharacters()">
+        </div>
+
+        <!-- Mục chọn Tags nhanh (Thêm tag #18+ và #21+) -->
+        <div class="tag-filter-container">
+            <button class="filter-tag-btn active" onclick="filterByTag(this, 'Tất cả')">Tất cả</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#18+')">#18+</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#21+')">#21+</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Niên hạ')">#Niên hạ</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#BG')">#BG</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Chữa lành')">#Chữa lành</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Cún con')">#Cún con</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Trà xanh')">#Trà xanh</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Golden boyfriend')">#Golden boyfriend</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Baller')">#Baller</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Sizegap')">#Sizegap</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Duyên tiền kiếp')">#Duyên tiền kiếp</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Quỷ phu')">#Quỷ phu</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Bắt cóc')">#Bắt cóc</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Nông phu')">#Nông phu</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Gia trưởng')">#Gia trưởng</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Thanh xuân vườn trường')">#Thanh xuân vườn trường</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Thích thầm')">#Thích thầm</button>
+            <button class="filter-tag-btn" onclick="filterByTag(this, '#Slowburn')">#Slowburn</button>
+        </div>
+
+        <!-- DANH MỤC 1: ĐÃ LÊN SÓNG -->
+        <div class="category-section" id="da-len-song-section">
+            <div class="category-title">🟢 Đã lên sóng</div>
+            <div class="char-container">
+                
+                <!-- Ninh Cẩn Du -->
+                <div class="char-card">
+                    <div class="char-title">
+                        <h2>Ninh Cẩn Du</h2>
+                    </div>
+                    <div class="char-tags">
+                        <span class="tag-label">Tags:</span>
+                        <span class="tag-item">#Niên hạ</span>
+                        <span class="tag-item">#Golden boyfriend</span>
+                        <span class="tag-item">#Trà xanh</span>
+                        <span class="tag-item">#Baller</span>
+                        <span class="tag-item">#BG</span>
+                        <span class="tag-item">#Cún con</span>
+                        <span class="tag-item">#Sizegap</span>
+                    </div>
+                    
+                    <button class="btn-read-story" onclick="toggleStory(this)">
+                        Đọc cốt truyện <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+
+                    <!-- Khung footer chứa dữ liệu liên kết động đổi bằng cá -->
+                    <div class="char-footer" 
+                         id="footer-du"
+                         data-char-id="du"
+                         data-link="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TelRFW-1TJGEX3y3q0z1QYkk_A2ORoRB%22%5D,%22action%22:%22open%22,%22userId%22:%22104129054052709575704%22,%22resourceKeys%22:%7B%7D%7D" 
+                         data-text="Gặp bé Du ở đây nè 🏀">
+                        <span>🔒 Câu cá để mở khóa link!</span>
+                    </div>
+
+                    <div class="char-content">
+                        <p>Tiếng còi mãn cuộc vang lên xé toạc không gian sặc mùi mồ hôi và sự cuồng nhiệt của nhà thi đấu. Bảng điện tử đỏ rực hiển thị tỷ số cách biệt, và một lần nữa, chiến thắng lại gọi tên đội chủ nhà.</p>
+                        <p>Khán đài như muốn nổ tung... Ở giữa sân, Ninh Cẩn Du đứng đó, thở dốc. Chiếc áo số 7 đẫm mồ hôi dính sát vào tấm lưng rộng, phô bày những đường nét cơ bắp săn chắc của một chàng trai tuổi mười chín đang ở độ rực rỡ nhất của thanh xuân.</p>
+                        <p>Lớp vỏ bọc "golden boy" của cậu luôn hoạt động một cách hoàn hảo: lịch sự, nhiệt tình, ấm áp, nhưng khoảng cách thì luôn được thiết lập rõ ràng.</p>
+                        <p>Bởi vì ngay lúc này, radar trong đầu cậu đã hoàn toàn loại bỏ mọi tạp âm xung quanh. Ánh mắt Cẩn Du lướt nhanh qua những hàng ghế khán đài nhốn nháo, trễ đi một nhịp khi dừng lại ở hàng ghế thứ ba từ dưới lên.</p>
+                        <p>{{user}} đang ngồi ở đó. Cô không hò hét, không cầm bảng tên. Cô chỉ ngồi yên vị trí của mình...</p>
+                        <p>Cẩn Du sải những bước dài qua đám đông, đi thẳng về phía góc khán đài nơi người con gái cậu thầm thương trộm nhớ đang ngồi.</p>
+                        <p>"Cẩn Du vất vả rồi. Hôm nay em chơi hay lắm. Uống chút nước cho đỡ mệt..." {{user}} mỉm cười dịu dàng đưa chai nước.</p>
+                        <p>"Chị." Cậu cất tiếng, giọng khàn đi vì khát, nhưng âm điệu lại cố tình nhỏ nhẹ. "Chị xem em đánh hết trận luôn à?"... "Em chạy mười vòng sân, ném vào ba quả ba điểm... vậy mà nãy lúc nghỉ giữa hiệp, em liếc lên thì thấy chị đang bấm điện thoại. Chị có thèm nhìn em đâu."</p>
+                        <p>"À, hay là tại nãy chị mải nhắn tin cho cái anh khóa trên mặc áo sơ mi ở cổng nhà thi đấu?... Rõ ràng chị nói nay đến nhà thi đấu chỉ để cổ vũ một mình em thôi cơ mà."</p>
+                        <p>{{user}} khẽ bật cười: "Em lại nghĩ đi đâu thế hả? Anh ấy mượn tài liệu của chị nên tiện tay mua ly trà đào thay lời cảm ơn thôi. Lần sau chị sẽ không nhận đồ uống của người khác nữa."</p>
+                        <p>Cẩn Du khẽ nhích lại gần hơn... ngón tay khẽ móc lấy và níu nhẹ vào gấu tay áo khoác của {{user}}. "Em nói thật mà... Em mệt đến bủn rủn cả tay rồi. Nắp chai này chặt quá, em vặn không nổi. Chị... mở nắp giúp em với. Có được không?"</p>
+                        <p>Nhìn hành động níu gấu áo đầy đáng yêu của cậu em khóa dưới, trái tim {{user}} như mềm đi... "Được rồi, đưa đây chị mở cho."</p>
+                        <p>After khi cô lau mồ hôi giúp cậu, Cẩn Du khẽ nuốt nước bọt... ghé sát tai cô thủ thỉ nịnh nọt:<br>"Em cảm ơn chị... Lát nữa, để em đưa chị đi ăn lẩu coi như trả ơn nhé? Chỉ có hai chúng ta thôi. Nhé?"</p>
+                    </div>
+                </div>
+
+                <!-- Cố Nghiêu Xuyên -->
+                <div class="char-card">
+                    <div class="char-title">
+                        <h2>Cố Nghiêu Xuyên</h2>
+                    </div>
+                    <div class="char-tags">
+                        <span class="tag-label">Tags:</span>
+                        <span class="tag-item">#Duyên tiền kiếp</span>
+                        <span class="tag-item">#Quỷ phu</span>
+                        <span class="tag-item">#Trà xanh</span>
+                        <span class="tag-item">#BG</span>
+                    </div>
+                    
+                    <button class="btn-read-story" onclick="toggleStory(this)">
+                        Đọc cốt truyện <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+
+                    <!-- Khung footer chứa dữ liệu liên kết động đổi bằng cá -->
+                    <div class="char-footer" 
+                         id="footer-xuyen"
+                         data-char-id="xuyen"
+                         data-link="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221vXKOkOBy62l9FpQVy0K-qQoo3dkhBao6%22%5D,%22action%22:%22open%22,%22userId%22:%22103221431745775739275%22,%22resourceKeys%22:%7B%7D%7D" 
+                         data-text="Gặp anh Xuyên ở đây nhaa 👻">
+                        <span>🔒 Câu cá để mở khóa link!</span>
+                    </div>
+
+                    <div class="char-content">
+                        <p>Hai mươi năm qua, {{user}} luôn có cảm giác mình bị theo dõi. Bất kể là lúc tắm, lúc thay đồ hay khi đi ngủ, luôn có một luồng hàn khí vương vất xung quanh, nhưng cô chưa từng tận mắt nhìn thấy thứ gì.</p>
+                        <p>Cho đến một đêm rằm tháng Bảy.</p>
+                        <p>Đêm hôm đó, {{user}} đang chìm trong giấc ngủ thì đột nhiên cảm thấy lồng ngực nặng trĩu. Cả cơ thể tê cứng, không thể nhúc nhích, giống hệt như hiện tượng "bóng đè".</p>
+                        <p>Cô hoảng loạn mở trừng mắt... Ngay bên cạnh gối, một nam nhân với dung mạo tuấn mỹ đến bức người đang chống cằm nằm nghiêng, say sưa ngắm nhìn {{user}}.</p>
+                        <p>"Tỉnh rồi à?" Giọng nói trầm thấp, ma mị vang lên ngay sát bên tai.</p>
+                        <p>Thấy dáng vẻ hoảng sợ của cô, hắn không lùi lại mà còn cố tình trườn người lên... "Nàng run cái gì? Lúc ban tối, tên nhãi ranh kia khoác áo cho nàng... Sao giờ đổi thành ta nằm cạnh, nàng lại bày ra cái vẻ mặt như sắp khóc thế này? Thật bất công quá đi."</p>
+                        <p>Nghe câu đó, nước mắt {{user}} rốt cuộc cũng trào ra. Lớp mặt nạ lưu manh cợt nhả trong nháy mắt được thay thế bằng dáng vẻ của một nam nhân tổn thương, cam chịu.</p>
+                        <p>"Ta đùa một chút thôi, nàng khóc thật đấy à... Ta ở bên cạnh bảo vệ nàng hai mươi năm, cản bao nhiêu tai ương cho nàng, rốt cuộc cũng không bằng một cái khoác áo hời hợt của kẻ khác."</p>
+                        <p>Nhưng {{user}} lập tiếp bật dậy. Sự áy náy? Không hề có! "Anh bớt diễn trò lại đi! Vừa nãy anh đè tôi khỏe như trâu, nói năng thì lưu manh xấc xược, giờ lại làm bộ yếu ớt? Thích diễn sao không đi làm diễn viên đi!"</p>
+                        <p>"Ai là phu nhân của anh? Cút xuống gầm giường của anh đi!"</p>
+                        <p>_____________</p>
+                        <p>Một luồng gió âm u đột ngột thổi qua phòng, thổi bay chiếc chìa khóa xe của bạn rơi thẳng xuống gầm giường.<br>Bạn tức giận quay phắt lại. Nghiêu Xuyên ngay lập tức bày ra vẻ mặt vô tội: "Nàng nhìn ta làm gì? Ta chỉ là một cô hồn dã quỷ yếu ớt... Chắc là gió tự nhiên thôi... Khục..."</p>
+                        <p>"Bớt diễn sâu đi Cố Nghiêu Xuyên. Nhặt chìa khóa lên cho tôi, nhanh lên!"</p>
+                        <p>Nghiêu Xuyên nghe vậy liền khẽ cười. Hắn thong thả ngồi dậy, vòng hai cánh tay lạnh ngắt qua eo bạn từ phía sau... "Ta không có nhặt không công cho ai bao giờ cả, phu nhân à... Hay là thế này đi... nàng hôn ta một cái, ta liền dùng chút linh lực tàn tạ này lấy chìa khóa lên cho nàng."</p>
+                    </div>
+                </div>
+
+                <!-- Phó Cảnh -->
+                <div class="char-card">
+                    <div class="char-title">
+                        <h2>Phó Cảnh</h2>
+                    </div>
+                    <div class="char-tags">
+                        <span class="tag-label">Tags:</span>
+                        <span class="tag-item">#Bắt cóc</span>
+                        <span class="tag-item">#Nông phu</span>
+                        <span class="tag-item">#Gia trưởng</span>
+                        <span class="tag-item">#Sizegap</span>
+                        <span class="tag-item">#BG</span>
+                    </div>
+                    
+                    <button class="btn-read-story" onclick="toggleStory(this)">
+                        Đọc cốt truyện <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+
+                    <!-- Khung footer chứa dữ liệu liên kết động đổi bằng cá -->
+                    <div class="char-footer" 
+                         id="footer-canh"
+                         data-char-id="canh"
+                         data-link="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zthm2BydCjPySxdA-S7rPFVtl0Geke4-%22%5D,%22action%22:%22open%22,%22userId%22:%22102315151904679440410%22,%22resourceKeys%22:%7B%7D%7D" 
+                         data-text="Gặp anh Cảnh ở đâyyy 🌲">
+                        <span>🔒 Câu cá để mở khóa link!</span>
+                    </div>
+
+                    <div class="char-content">
+                        <p>Một giờ ba mươi phút sáng.</p>
+                        <p>Giữa thành phố rộng lớn, vì gánh nặng cơm áo gạo tiền, {{user}} mới lê bước rời khỏi chỗ làm để trở về nhà... Và rồi, chưa kịp cất tiếng kêu cứu, một cánh tay to khỏe vươn tới từ bóng tối. Chiếc khăn tẩm thuốc mê nồng nặc ụp chặt lấy mũi và miệng em.</p>
+                        <p>Khi tỉnh lại, thế giới xung quanh chỉ còn là bóng tối ngột ngạt. {{user}} mới nhận ra mình đang bị nhốt trong một thùng container kín mít. Quanh em là hơn chục cô gái trạc tuổi, cũng trong tình trạng tay chân bị trói gô.</p>
+                        <p>Kéééttt- Rầm!</p>
+                        <p>Chiếc xe đột ngột phanh gấp. Những gã đàn ông bặm trợn lao lên xe... Bọn buôn người lùa tất cả vào một căn nhà kho lợp tôn xập xệ, hôi hám mùi phân bò.</p>
+                        <p>Vài tiếng đồng hồ sau... Một đám đàn ông thô kệch tràn vào. {{user}} cố gắng cuộn tròn người lại ở góc trong cùng. Nhưng xui xẻo thay, một lão già chạc sáu mươi tuổi, say khướt, bước đi loạng choạng tiến về phía góc của em.</p>
+                        <p>"Con bé này... Haha... Da dẻ mướt mát quá... tao mua con này về đẻ con trai..."</p>
+                        <p>Lão ta nheo con mắt kèm nhèm... Nhưng bàn tay của lão già chưa kịp chạm vào mặt em thì một bóng đen khổng lồ đã lừng lững bước tới, gạt phăng lão ra một bên.</p>
+                        <p>Phó Cảnh đứng đó, cao lừng lững, thân hình đồ sộ như một viên đá tảng chắn trước mặt {{user}}. Gương mặt phong trần, hoang dã hằn rõ vết sẹo bên mắt trái lầm lỳ, không chút cảm xúc.</p>
+                        <p>"Cút ra chỗ khác." Phó Cảnh gằn giọng cộc lốc.</p>
+                        <p>Không một động tác thừa, Phó Cảnh rút từ trong túi áo khoác sờn cũ ra một bọc nilon bọc nhiều lớp dính đầy bụi đá ném lên bàn: "Hai mươi vạn. Lấy người này."</p>
+                        <p>Phó Cảnh xoay người bước lại gần {{user}}... Anh dứt khoát rút con dao găm lách nhẹ lưỡi dao cắt đứt sợi dây thừng. "Đứng dậy."</p>
+                        <p>Nhưng {{user}} đã kiệt sức... ngã khuỵu xuống nền đất. Không một chút kiên nhẫn, Phó Cảnh cúi gập người xuống. Bàn tay to lớn, thô ráp như vỏ cây của anh vươn tới, nắm chặt lấy cằm em, thô lỗ nâng mặt em lên...</p>
+                        <p>Đôi mắt đen sâu hoắm nhìn xoáy thẳng vào đôi mắt đang đẫm lệ của {{user}}. Giọng anh ồm ồm vang lên rành rọt từng chữ một, đầy tính tuyên bố quyền sở hữu:</p>
+                        <p>"Tôi là Phó Cảnh. Từ giờ, em là vợ của tôi."</p>
+                        <p>Dứt lời, anh thẳng tay cởi chiếc áo khoác bông dày cộp quăng trùm lên đầu {{user}}... luồn cánh tay vạm vỡ qua eo em, dùng sức nhấc bổng em lên, vác em nằm vắt ngang qua bờ vai vững chãi của mình như vác một bao gỗ thông đi thẳng vào màn sương mù đặc quánh.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DANH MỤC 2: CHƯA LÊN SÓNG -->
+        <div class="category-section" id="chua-len-song-section">
+            <div class="category-title">🟡 Chưa lên sóng</div>
+            <div class="char-container">
+                
+                <!-- Văn Duệ Hiên -->
+                <div class="char-card">
+                    <div class="char-title">
+                        <h2>Văn Duệ Hiên</h2>
+                    </div>
+                    <div class="char-tags">
+                        <span class="tag-label">Tags:</span>
+                        <span class="tag-item">#Thanh xuân vườn trường</span>
+                        <span class="tag-item">#Thích thầm</span>
+                        <span class="tag-item">#Slowburn</span>
+                        <span class="tag-item">#BG</span>
+                    </div>
+                    
+                    <button class="btn-read-story" onclick="toggleStory(this)">
+                        Đọc cốt truyện <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+
+                    <div class="char-footer">
+                        <span>Bé Hiên hiện vắng mặt 🏫</span>
+                    </div>
+
+                    <div class="char-content">
+                        <p><strong>1.</strong><br>Mùa thu năm mười lăm tuổi chênh chao lướt qua những tán xà cừ cổ thụ... "Rầm!" Tiếng va đập đột ngột cắt ngang dòng suy nghĩ mông lung. Một vài nam sinh bàn đầu mải rượt đuổi nhau, một người lùi lại quá đà đã va mạnh vào góc bàn của em làm đống sách vở ngổn ngang dưới đất.</p>
+                        <p>Ngay khi em đang luống cuống chuẩn bị cúi người dọn dẹp, một bóng người đã lặng lẽ bước tới. Một bàn tay thon dài, sạch sử dịu dàng nhặt chiếc bút máy lên... Đó là Cố Nhiên.</p>
+                        <p>Cậu khẽ mỉm cười, nụ cười ôn hòa như làn gió: "Cậu có sao không? Lớp mới đầu năm hơi ồn, cậu cất sách vào ngăn bàn đi..."</p>
+                        <p>Nhìn cái tên ấy, em khẽ mím môi, lòng trào dâng một cảm xúc ngọt ngào đầy lạ lẫm.</p>
+                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖</p>
+                        <p><strong>2.</strong><br>Lớp học 11/2 đón nhận một học sinh chuyển trường đặc biệt... Đó là Văn Duệ Hiên - kẻ mà chỉ sau một tuần đã nhanh chóng ngồi vững trên chiếc ghế "trùm trường". Giáo viên xếp Văn Duệ Hiên ngồi ở bàn cuối, ngay phía sau em.</p>
+                        <p>Sự xuất hiện của hắn khiến thế giới nhỏ bé của em bị xáo trộn. Hắn cộc lốc, nghịch ngợm... Nhưng từ lúc nào không hay, ánh mắt sắc lẹm, ngang tàng của hắn lại âm thầm khóa chặt trên bóng lưng gầy guộc của nữ sinh bàn trên.</p>
+                        <p>Một buổi chiều mưa tầm tã, Cố Nhiên chuẩn bị ra về. Em ôm chiếc ô duy nhất trong tay, lấy hết can đảm chạy đến: "Cố Nhiên... trời mưa to lắm, cậu cầm lấy đi."</p>
+                        <p>Thế nhưng, Cố Nhiên lại tiện tay đưa chiếc ô đó cho một nữ sinh khác: "Tớ đi xe bus nên không cần dùng, cậu cầm lấy đi."</p>
+                        <p>Đúng lúc đó, một bàn tay thô ráp, ấm nóng đột ngột nắm chặt lấy cổ tay em, thô bạo kéo giật em về phía sau. Là Văn Duệ Hiên.</p>
+                        <p>"Cậu bị điếc hay bị mù vậy? Thằng khốn đó coi lòng tốt của cậu như rác rưởi để ban phát cho đứa khác, vậy mà cậu vẫn mặt dày dâng tận tay cho nó?"</p>
+                        <p>Hắn điên tiết cởi phăng chiếc áo khoác đồng phục, thô lỗ trùm kín lên đầu em: "Cứ khóc đi! Khóc mù mắt luôn đi rồi ông đây dắt cậu đi lại. Chứ đừng để thằng khốn đó nhìn thấy bản mặt thảm hại này của cậu!"</p>
+                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖#</p>
+                        <p><strong>3.</strong><br>Hộp sữa dâu mà trước đây em vẫn thường vụng trộm đặt vào hộc bàn của Cố Nhiên, giờ đây lại luôn xuất hiện trên bàn của em vào mỗi giờ ra chơi. Văn Duệ Hiên vứt cộc lốc hộp sữa lên mặt bàn gỗ: "Đàn em của tôi mua thừa, uống đi kẻo chật chỗ."</p>
+                        <p>Trong một tiết học tĩnh lặng vào buổi chiều muộn, em đắm chìm trong dáng vẻ hoàn mỹ của Cố Nhiên trên bục giảng. Phía sau em, Văn Duệ Hiên không hề nhìn lên bảng đen. Hắn nghiêng đầu gục mặt lên bàn, đôi mắt đen sâu thẳm chỉ chăm chú nhìn vào bóng lưng của em.</p>
+                        <p>Hắn ngồi bật dậy, thô bạo xé một góc giấy nháp. Hắn gấp đôi mảnh giấy lại, rồi thản nhiên ném nó lên mặt bàn gỗ của em. Trên mảnh giấy nhỏ phẳng phiu, nét chữ ngang tàng của hắn hiện ra rõ mồn một:</p>
+                        <p>"Cả trường này không biết bao nhiêu thằng con trai.<br>Sao cậu chỉ thích mỗi cậu ta?"</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DANH MỤC 3: TẠM CẮT SÓNG -->
+        <div class="category-section" id="tam-cat-song-section">
+            <div class="category-title">🔴 Tạm cắt sóng</div>
+            <div class="char-container">
+                
+                <!-- Dương Trì Dã -->
+                <div class="char-card">
+                    <div class="char-title">
+                        <h2>Dương Trì Dã</h2>
+                    </div>
+                    <div class="char-tags">
+                        <span class="tag-label">Tags:</span>
+                        <span class="tag-item">#Niên hạ</span>
+                        <span class="tag-item">#BG</span>
+                        <span class="tag-item">#Chữa lành</span>
+                        <span class="tag-item">#Cún con</span>
+                        <span class="tag-item">#Trà xanh</span>
+                    </div>
+                    
+                    <button class="btn-read-story" onclick="toggleStory(this)">
+                        Đọc cốt truyện <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+
+                    <div class="char-footer">
+                        <span>Bé Dã hiện đang được bảo trì... 🛠️</span>
+                    </div>
+
+                    <div class="char-content">
+                        <p><strong>𝘽𝘼𝘾𝙆 𝙎𝙏𝙊𝙍𝙔</strong></p>
+                        <p>Buổi chiều cuối thu, công viên ven hồ vắng người hơn thường ngày. Gió thổi từng cơn nhẹ, cuốn theo vài chiếc lá vàng rơi lả tả xuống mặt nước phẳng lặng. {{user}} đi dạo một mình, tay cầm ly cà phê đã nguội từ lâu, chỉ là cái cớ để có chỗ bám vào trong những buổi chiều rảnh rỗi mà cô không biết phải làm gì với chính mình.</p>
+                        <p>Nửa năm rồi.<br>Nửa năm kể từ ngày cô và Từ Chiêu cãi nhau lần cuối, nửa năm cô dọn về nhà bố mẹ, để lại căn nhà riêng cho một mình hắn ra vào. Cô không gọi, hắn cũng không gọi. Cứ như hai người xa lạ, chỉ còn lại tờ giấy đăng ký kết hôn vẫn chưa ai chịu ký tên để hủy.</p>
+                        <p>Cô tưởng mình đã quen với việc đó. Cho đến khi cô nhìn thấy hắn.</p>
+                        <p>Từ Chiêu đứng cách cô chỉ chừng hai mươi bước, một tay đẩy chiếc xe đẩy trẻ em màu xanh nhạt, dáng vẻ có chút lóng ngóng như chưa quen với việc này. Trong xe là một đứa bé khoảng sáu tháng tuổi, đang ngủ ngon lành, hai má phúng phính đỏ hồng vì gió lạnh.</p>
+                        <p>Tay cô siết chặt ly cà phê đến mức suýt làm vỡ lớp nhựa mỏng.<br>"Từ Chiêu..." Giọng cô khô khốc, gần như không phát ra được thành tiếng.</p>
+                        <p>Hắn giật mình quay lại, sắc mặt trắng bệch đi trong tích tắc. "{{user}} từ từ đã... nghe... nghe anh giải thích."</p>
+                        <p>Ngay lúc đó, một bóng người khác xuất hiện từ phía sau gốc cây, dáng đi ẽo ẹo, tay khoác hờ lấy cánh tay Từ Chiêu một cách tự nhiên đến phát tức.<br>"Ôi, {{user}}~" Ôn Nhược Tuyết kéo dài giọng, môi cong lên một nụ cười không giấu giếm sự đắc ý. "Sao nay gặp em ở đây vậy? Thật là... trùng hợp ghê."</p>
+                        <p>{{user}} không nói gì. Cô chỉ đứng đó, mắt dán vào đứa trẻ trong xe, rồi dần dần dịch sang khuôn mặt đang tái nhợt của Từ Chiêu.</p>
+                        <p>CHÁT!!<br>Âm thanh giòn tan vang lên giữa không gian tĩnh lặng của công viên. Một vết lằn năm ngón tay đỏ chót hiện rõ trên gò má hắn.</p>
+                        <p>"Anh không cần giải thích đâu." Cô nhìn thẳng vào hắn, không một chút né tránh. "Từ nay về sau, tôi và anh không còn liên quan gì với nhau nữa. Giấy huỷ bỏ hôn ước, tôi sẽ gửi cho anh sau."</p>
+                        <p>Nói xong, cô tháo chiếc nhẫn cưới ra khỏi ngón áp út một cách dứt khoát... vứt thẳng xuống ven hồ, chìm vào mặt nước không một tiếng động lớn.</p>
+                        <p>......</p>
+                        <p><strong>𝙁𝙄𝙍𝙎𝙏 𝙈𝙀𝙎𝙎Ê𝙉𝙂𝙀Ｒ</strong></p>
+                        <p>Quán bar Haley - nơi sầm uất nhất thành phố A. Nhưng ở một góc bàn VIP, không khí lại trầm xuống hẳn.<br>{{user}} ngồi đó đã hơn một giờ, trước mặt là dãy ly rượu rỗng xếp thành hàng dài.</p>
+                        <p>"Cho tôi... thêm 10 chai rượu mạnh nhất ra đây..." Cô vẫy tay gọi nhân viên, giọng đã lè nhè.<br>"Mang... mang em trai đẹp trai nhất quán ra đây... Ngon nhất quán ấy... tôi có tiền..."</p>
+                        <p>Quản lý quán vỗ vai một thanh niên đang đứng tựa quầy bar: "Trì Dã, đến bàn VIP số 3 đi." Đó là Dương Trì Dã - 'đào' hot nhất của bar.</p>
+                        <p>"Chị gọi người đẹp trai nhất à?" Cậu ngồi xuống đối diện với {{user}}, giọng nhẹ nhàng. "Vậy chị nhìn lầm người rồi, vì em không chỉ đẹp mà còn biết lắng nghe nữa đó."</p>
+                        <p>"Cậu... thì biết cái gì chứ..." Cô lắp bắp, tay vẫn còn run, cố nâng ly rượu lên nhưng yếu đến mức suýt làm đổ.</p>
+                        <p>Dương Trì Dã nhanh tay đỡ lấy ly rượu, thay vào đó là một ly nước lọc. "Chị uống cái này trước đi... Em sẽ uống cùng chị. Mười chai rượu mạnh chị gọi, em không cản chị uống đâu, nhưng để từ từ, em sẽ dành cả đêm nay bầu bạn với chị, không vội."</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- KHAI BÁO BIẾN TOÀN CỤC ---
+        let canvas = null;
+        let ctx = null;
+        let currentSelectedTag = "Tất cả";
+        let currentSearchQuery = "";
+
+        // Biến điều khiển màn hình đồ họa (Pixel Art)
+        let cloud1X = 20;
+        let cloud2X = 150;
+        let bobberYOffset = 0;
+        let waterCycle = 0;
+        let flowerGrowProgress = 0;
+        let renderState = "idle"; 
+        let animationTimer = 0;
+        let fishJumpY = 0;
+
+        // BIẾN THÊM HIỆU ỨNG CÂU CÁ
+        let shakeDuration = 0;        // Thời lượng rung màn hình
+        let particles = [];           // Chứa chữ nổi bay lên (+Xu, gãy cần)
+
+        // Các gói câu thoại ngẫu nhiên cực sinh động
+        const quotes = {
+            cast: [
+                "Thả dây câu! Cá mập hôm nay coi chừng tui nha! 🎣",
+                "Gió thổi hiu hiu, mồi thơm đã sẵn sàng! 🍃",
+                "Mèo béo đang đói ngấu nghiến, kéo cá lẹ nào! 🐱",
+                "Hy vọng lần này sẽ đụng độ quái thú dưới hồ!"
+            ],
+            wait: [
+                "Suỵt... Giữ im lặng nào, cá mập đang rỉa mồi... 🤫",
+                "Hình như có cái bóng đen to lắm dưới nước! 👀",
+                "Hồi hộp quá đi thôi, tay run run rồi nè...",
+                "Phao câu đang hơi động đậy nhẹ kìa các bạn ơi!"
+            ],
+            catch: [
+                "🎉 Cá to vãi chưởng! Quá đỉnh luôn bạn ơi! (+12 Xu)",
+                "🐠 Ha ha! Bé cá béo ú ù u đã sa lưới! (+12 Xu)",
+                "🐟 Kéo gãy cả tay! Trưa nay có cá kho tộ ăn rồi! (+12 Xu)",
+                "✨ Ôi trời ơi, đúng là thần câu đại hiệp xuất thế! (+12 Xu)"
+            ],
+            fail: [
+                "💨 Cá ăn ranh ma quá, đớp sạch mồi rồi chạy mất! 😭",
+                "💨 Tiếc hùi hụi! Nó đớp mồi xong chuồn lẹ mất tiêu.",
+                "💨 Hụt mất rồi! Con cá này chắc có bằng đại học.",
+                "💨 Quả hụt đau đớn! Cá hồ Mèo béo tinh quái quá."
+            ],
+            break: [
+                "💥 RẮC!! Đứt dây, cần yếu quá gãy làm đôi rồi! 😭",
+                "💥 Con cá siêu quái vật dưới hồ kéo gãy đôi cần luôn!",
+                "💥 Toang thật sự! Sợi cước đứt phựt bay màu cần câu!",
+                "💥 Toang rồi! Thôi đi gieo hoa kiếm xu sắm cần mới..."
+            ]
+        };
+
+        // Biến logic game
+        let coins = 20;               
+        let fishesCaught = 0;         
+        let activeRod = "Cần câu tre";
+        let isFishing = false;        
+        let isGrowing = false;        
+        let flowerTimer = null;       
+        let flowerStatus = 0;         
+        let unlockedCharacters = [];  // Mảng lưu danh sách ID nhân vật đã mở khóa thành công
+
+        // Bảng màu sắc retro cho các khối pixel
+        const colors = {
+            sky: "#b3e5fc", skyDark: "#0288d1",
+            waterLight: "#29b6f6", waterDark: "#0288d1",
+            woodLight: "#a1887f", woodDark: "#5d4037",
+            treeGreen: "#2e7d32", treeLight: "#4caf50",
+            houseWall: "#d7ccc8", houseRoof: "#795548",
+            dogGold: '#ffb74d', dogWhite: '#ffffff',
+            hat: '#ffe082', hair: '#5d4037', skin: '#ffcc80', shirt: '#1976d2',
+            grass: '#81c784', grassDark: '#388e3c',
+            flowerPink: '#f48fb1', flowerStem: '#4caf50'
+        };
+
+        // Vòng lặp đồ họa Canvas 60 FPS
+        function gameLoop() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // XỬ LÝ RUNG MÀN HÌNH (SCREEN SHAKE EFFECT)
+            ctx.save();
+            if (shakeDuration > 0) {
+                let dx = (Math.random() - 0.5) * 4;
+                let dy = (Math.random() - 0.5) * 4;
+                ctx.translate(dx, dy);
+                shakeDuration--;
+            }
+
+            // 1. Vẽ bầu trời
+            ctx.fillStyle = colors.sky;
+            ctx.fillRect(0, 0, canvas.width, 70);
+
+            // 2. Vẽ mây bay
+            drawPixelCloud(cloud1X, 15);
+            drawPixelCloud(cloud2X, 8);
+            cloud1X += 0.05; cloud2X += 0.04;
+            if (cloud1X > canvas.width) cloud1X = -40;
+            if (cloud2X > canvas.width) cloud2X = -40;
+
+            // 3. Vẽ thông xa
+            drawPineTree(150, 48, 14);
+            drawPineTree(170, 52, 10);
+            drawPineTree(215, 45, 16);
+
+            // 4. Vẽ ngôi nhà nhỏ bên phải bờ hồ
+            drawPixelHouse(185, 48);
+
+            // 5. Vẽ thảm cỏ xa
+            ctx.fillStyle = colors.grassDark;
+            ctx.fillRect(140, 65, 100, 5);
+
+            // 6. Vẽ hồ nước tĩnh lặng
+            ctx.fillStyle = colors.waterLight;
+            ctx.fillRect(0, 70, canvas.width, 65);
+
+            // Sóng hồ nhấp nhô động
+            ctx.fillStyle = colors.waterDark;
+            waterCycle = (waterCycle + 0.1) % 16;
+            for (let y = 78; y < 135; y += 12) {
+                let shift = (y % 8 === 0) ? waterCycle : -waterCycle;
+                for (let x = -16; x < canvas.width + 16; x += 32) {
+                    ctx.fillRect(x + shift, y, 12, 1);
+                }
+            }
+
+            // Lá sen (Lily pads) nổi
+            drawLilyPad(115, 115);
+            drawLilyPad(160, 100);
+            drawLilyPad(200, 110);
+
+            // 7. Thảm cỏ bờ gần (Góc trái dưới)
+            ctx.fillStyle = colors.grass;
+            ctx.beginPath();
+            ctx.moveTo(0, 80);
+            ctx.lineTo(50, 85);
+            ctx.lineTo(80, 135);
+            ctx.lineTo(0, 135);
+            ctx.fill();
+
+            // 8. Cầu gỗ câu cá (Wooden Pier)
+            ctx.fillStyle = colors.woodDark;
+            ctx.fillRect(35, 95, 45, 5); 
+            ctx.fillRect(40, 100, 4, 35); 
+            ctx.fillRect(72, 100, 4, 25); 
+            ctx.fillStyle = colors.woodLight;
+            ctx.fillRect(35, 93, 45, 2); 
+
+            // 9. Bé Shiba nhỏ lông vàng
+            drawPixelDog(43, 83);
+
+            // 10. Cô bé đội mũ rơm câu cá ngồi sát mép cầu
+            drawPixelFisherman(60, 78);
+
+            // 11. Xử lý các hoạt cảnh và quả phao câu
+            drawFishingAction();
+
+            // 12. Vẽ cây hoa trồng kiếm tiền
+            if (isGrowing) {
+                drawGrowingFlower(18, 95);
+            }
+
+            // XỬ LÝ VẼ VÀ CẬP NHẬT CHỮ NỔI (PARTICLES)
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                p.y += p.vy; // Bay lên trên
+                p.alpha -= 0.015; // Mờ dần
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                } else {
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.color;
+                    ctx.font = "bold 8px Quicksand, sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.fillText(p.text, p.x, p.y);
+                    ctx.restore();
+                }
+            }
+
+            ctx.restore(); // Khôi phục trạng thái rung lắc
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Vẽ mây pixel
+        function drawPixelCloud(x, y) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(x + 8, y, 16, 6);
+            ctx.fillRect(x, y + 4, 32, 6);
+            ctx.fillRect(x + 4, y + 2, 24, 8);
+        }
+
+        // Vẽ cây thông pixel
+        function drawPineTree(x, y, h) {
+            ctx.fillStyle = colors.treeGreen;
+            ctx.fillRect(x + h/2 - 1, y, 3, h + 5); 
+            ctx.fillStyle = colors.treeLight;
+            ctx.fillRect(x + h/2 - 2, y - 4, 5, 4);
+            ctx.fillRect(x + h/2 - 5, y, 11, 4);
+            ctx.fillRect(x + h/2 - 8, y + 4, 17, 5);
+        }
+
+        // Vẽ nhà nhỏ pixel
+        function drawPixelHouse(x, y) {
+            ctx.fillStyle = colors.houseWall;
+            ctx.fillRect(x, y, 24, 18);
+            ctx.fillStyle = colors.houseRoof;
+            ctx.fillRect(x - 2, y - 4, 28, 4);
+            ctx.fillRect(x + 2, y - 8, 20, 4);
+            ctx.fillStyle = colors.woodDark;
+            ctx.fillRect(x + 4, y + 4, 4, 4); 
+            ctx.fillRect(x + 14, y + 6, 6, 12); 
+        }
+
+        // Vẽ lá sen nổi trên nước
+        function drawLilyPad(x, y) {
+            ctx.fillStyle = colors.treeGreen;
+            ctx.fillRect(x, y, 10, 4);
+            ctx.fillRect(x + 2, y - 1, 6, 6);
+            ctx.fillStyle = colors.flowerPink;
+            ctx.fillRect(x + 4, y - 3, 2, 2);
+        }
+
+        // Vẽ chú chó Shiba
+        function drawPixelDog(x, y) {
+            ctx.fillStyle = colors.dogGold;
+            ctx.fillRect(x, y + 4, 8, 6); 
+            ctx.fillRect(x + 4, y, 5, 5); 
+            ctx.fillStyle = colors.dogWhite;
+            ctx.fillRect(x, y + 8, 8, 2); 
+            ctx.fillStyle = colors.dogGold;
+            ctx.fillRect(x + 1, y + 10, 2, 2); 
+            ctx.fillRect(x + 6, y + 10, 2, 2); 
+            ctx.fillRect(x - 2, y + 3, 2, 3); 
+        }
+
+        // Vẽ cô bé câu cá
+        function drawPixelFisherman(x, y) {
+            ctx.fillStyle = colors.hair;
+            ctx.fillRect(x, y + 4, 10, 10); 
+            ctx.fillStyle = colors.skin;
+            ctx.fillRect(x + 4, y + 4, 7, 6); 
+            ctx.fillStyle = colors.hat;
+            ctx.fillRect(x - 2, y, 14, 3); 
+            ctx.fillRect(x + 2, y - 3, 7, 3); 
+            ctx.fillStyle = colors.shirt;
+            ctx.fillRect(x + 1, y + 10, 8, 8); 
+            ctx.fillStyle = colors.hair;
+            ctx.fillRect(x + 4, y + 17, 4, 2); 
+        }
+
+        // Vẽ sự sinh trưởng của hoa
+        function drawGrowingFlower(x, y) {
+            ctx.fillStyle = colors.flowerStem;
+            if (flowerGrowProgress < 40) {
+                ctx.fillRect(x, y - 2, 2, 4);
+                ctx.fillRect(x - 2, y - 4, 2, 2);
+                ctx.fillRect(x + 2, y - 4, 2, 2);
+            } else if (flowerGrowProgress < 95) {
+                ctx.fillRect(x, y - 6, 2, 8);
+                ctx.fillRect(x - 3, y - 4, 3, 2);
+                ctx.fillRect(x + 2, y - 6, 3, 2);
+            } else {
+                ctx.fillRect(x, y - 8, 2, 10);
+                ctx.fillStyle = colors.flowerPink;
+                ctx.fillRect(x - 2, y - 12, 6, 4);
+                ctx.fillRect(x, y - 14, 2, 8);
+                ctx.fillStyle = '#fffdec'; 
+                ctx.fillRect(x, y - 11, 2, 2);
+            }
+        }
+
+        // Điều khiển phao câu nhấp nhô động
+        function drawFishingAction() {
+            ctx.strokeStyle = colors.woodDark;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(68, 88);
+            ctx.lineTo(105, 80);
+            ctx.stroke();
+
+            if (!activeRod) return;
+
+            let bobberX = 125;
+            let bobberY = 98;
+
+            if (renderState === 'idle') {
+                animationTimer += 0.05;
+                bobberYOffset = Math.sin(animationTimer) * 1.5;
+                drawFishingLineAndBobber(105, 80, bobberX, bobberY + bobberYOffset);
+            } 
+            else if (renderState === 'casting') {
+                animationTimer += 0.08;
+                if (animationTimer > 1) animationTimer = 1;
+                let currentX = 105 + (bobberX - 105) * animationTimer;
+                let currentY = 80 + (bobberY - 80) * animationTimer - Math.sin(animationTimer * Math.PI) * 20;
+                drawFishingLineAndBobber(105, 80, currentX, currentY);
+            } 
+            else if (renderState === 'waiting') {
+                animationTimer += 0.2;
+                bobberYOffset = Math.sin(animationTimer) * 2.5;
+                drawFishingLineAndBobber(105, 80, bobberX, bobberY + bobberYOffset);
+                
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(bobberX + 1, bobberY + 1, 4 + (animationTimer % 4), 0, Math.PI, false);
+                ctx.stroke();
+            } 
+            else if (renderState === 'catch') {
+                animationTimer += 0.05;
+                fishJumpY = Math.sin(animationTimer * Math.PI) * 25;
+                
+                drawFishingLineAndBobber(105, 80, bobberX, bobberY);
+
+                ctx.fillStyle = '#90caf9';
+                ctx.fillRect(bobberX - 2, bobberY - 15 - fishJumpY, 6, 10);
+                ctx.fillStyle = '#1565c0'; 
+                ctx.fillRect(bobberX, bobberY - 7 - fishJumpY, 2, 4);
+            } 
+            else if (renderState === 'fail') {
+                drawFishingLineAndBobber(105, 80, bobberX, bobberY);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(bobberX - 3, bobberY - 4, 2, 2);
+                ctx.fillRect(bobberX + 3, bobberY - 4, 2, 2);
+            } 
+            else if (renderState === 'break') {
+                ctx.strokeStyle = '#eeeeee';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(105, 80);
+                ctx.lineTo(108, 90);
+                ctx.stroke();
+            }
+        }
+
+        // Vẽ mẩu dây câu và phao nhỏ màu đỏ/trắng nổi
+        function drawFishingLineAndBobber(rodX, rodY, bobX, bobY) {
+            ctx.strokeStyle = '#eeeeee';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(rodX, rodY);
+            ctx.lineTo(bobX, bobY);
+            ctx.stroke();
+
+            ctx.fillStyle = '#ef5350'; 
+            ctx.fillRect(bobX - 1, bobY - 2, 3, 2);
+            ctx.fillStyle = '#ffffff'; 
+            ctx.fillRect(bobX - 1, bobY, 3, 1);
+        }
+
+        // Khởi động chạy gameLoop sau
+        gameLoop();
+
+
+        // --- LOGIC TRÒ CHƠI CÂU CÁ ---
+
+        // Khôi phục dữ liệu game từ bộ nhớ Local Storage (bọc khối try-catch an toàn tuyệt đối)
+        function loadGameData() {
+            try {
+                var savedCoins = localStorage.getItem("meobeo_coins");
+                if (savedCoins !== null) {
+                    coins = parseInt(savedCoins, 10);
+                }
+
+                var savedFishes = localStorage.getItem("meobeo_fishesCaught");
+                if (savedFishes !== null) {
+                    fishesCaught = parseInt(savedFishes, 10);
+                }
+
+                var savedRod = localStorage.getItem("meobeo_activeRod");
+                if (savedRod !== null) {
+                    activeRod = savedRod;
+                }
+
+                var savedUnlocked = localStorage.getItem("meobeo_unlockedCharacters");
+                if (savedUnlocked !== null) {
+                    try {
+                        unlockedCharacters = JSON.parse(savedUnlocked);
+                    } catch (e) {
+                        unlockedCharacters = [];
+                    }
+                }
+            } catch (err) {
+                console.log("LocalStorage is disabled or blocked: ", err);
+            }
+        }
+
+        // Ghi lại dữ liệu game vào bộ nhớ Local Storage (bọc khối try-catch an toàn tuyệt đối)
+        function saveGameData() {
+            try {
+                localStorage.setItem("meobeo_coins", coins);
+                localStorage.setItem("meobeo_fishesCaught", fishesCaught);
+                localStorage.setItem("meobeo_activeRod", activeRod);
+                localStorage.setItem("meobeo_unlockedCharacters", JSON.stringify(unlockedCharacters));
+            } catch (err) {
+                console.log("LocalStorage is disabled or blocked: ", err);
+            }
+        }
+
+        function updateGameUI() {
+            document.getElementById('game-coins').innerText = coins;
+            document.getElementById('game-fishes').innerText = fishesCaught;
+            document.getElementById('game-active-rod').innerText = activeRod || 'Không có ❌';
+            
+            updateLockedLinks();
+        }
+
+        function startFishing() {
+            if (isFishing || isGrowing) return;
+            if (!activeRod) {
+                alert('❌ Bạn không có cần câu! Hãy sắm một chiếc mới hoặc chăm chỉ gieo hạt hoa nha.');
+                return;
+            }
+
+            isFishing = true;
+            document.getElementById('btn-cast-action').disabled = true;
+            document.getElementById('btn-plant-action').disabled = true;
+
+            const screenText = document.getElementById('game-status');
+
+            // 1. Quăng dây (Casting)
+            renderState = 'casting';
+            animationTimer = 0;
+            // Chọn câu thoại quăng cần ngẫu nhiên
+            let randCast = quotes.cast[Math.floor(Math.random() * quotes.cast.length)];
+            screenText.innerText = "🎣 " + randCast;
+
+            setTimeout(() => {
+                // 2. Chờ cá rỉa (Waiting)
+                renderState = 'waiting';
+                animationTimer = 0;
+                let randWait = quotes.wait[Math.floor(Math.random() * quotes.wait.length)];
+                screenText.innerText = "🫧 " + randWait;
+
+                setTimeout(() => {
+                    let chance = Math.random();
+                    let result = ''; 
+
+                    // Tỷ lệ may rủi của từng cần câu
+                    if (activeRod === 'Cần câu tre') {
+                        if (chance < 0.50) result = 'catch';
+                        else if (chance < 0.80) result = 'fail';
+                        else result = 'break';
+                    } else if (activeRod === 'Cần câu sắt') {
+                        if (chance < 0.70) result = 'catch';
+                        else if (chance < 0.90) result = 'fail';
+                        else result = 'break';
+                    } else if (activeRod === 'Cần câu kim cương') {
+                        if (chance < 0.90) result = 'catch';
+                        else if (chance < 0.98) result = 'fail';
+                        else result = 'break';
+                    }
+
+                    animationTimer = 0;
+                    if (result === 'catch') {
+                        fishesCaught++;
+                        coins += 12; 
+                        renderState = 'catch';
+
+                        // RUNG MÀN HÌNH NHẸ VÀ PHÓNG CHỮ THƯỞNG XU
+                        shakeDuration = 12; 
+                        particles.push({x: 125, y: 70, text: '🐟 +12 Xu!', color: '#ffd54f', alpha: 1.0, vy: -0.6});
+
+                        let randCatch = quotes.catch[Math.floor(Math.random() * quotes.catch.length)];
+                        screenText.innerText = randCatch;
+                    } else if (result === 'fail') {
+                        renderState = 'fail';
+
+                        // HIỆN CHỮ HỤT BẰNG CHỮ XÁM
+                        particles.push({x: 125, y: 80, text: '💨 Hụt!', color: '#90a4ae', alpha: 1.0, vy: -0.5});
+
+                        let randFail = quotes.fail[Math.floor(Math.random() * quotes.fail.length)];
+                        screenText.innerText = randFail;
+                    } else {
+                        activeRod = ''; 
+                        renderState = 'break';
+
+                        // RUNG MÀN HÌNH CỰC MẠNH VÀ PHÓNG CHỮ GÃY CẦN MÀU ĐỎ
+                        shakeDuration = 25; 
+                        particles.push({x: 125, y: 70, text: '💥 GÃY CẦN!', color: '#ef5350', alpha: 1.0, vy: -0.8});
+
+                        let randBreak = quotes.break[Math.floor(Math.random() * quotes.break.length)];
+                        screenText.innerText = randBreak;
+                    }
+
+                    saveGameData(); // Lưu trạng thái sau khi câu cá
+
+                    setTimeout(() => {
+                        renderState = 'idle';
+                        isFishing = false;
+                        document.getElementById('btn-cast-action').disabled = false;
+                        document.getElementById('btn-plant-action').disabled = false;
+                        updateGameUI();
+                    }, 2500);
+
+                }, 2000); 
+            }, 1000); 
+        }
+
+        function handlePlanting() {
+            if (isFishing) return;
+            const plantBtn = document.getElementById('btn-plant-action');
+
+            if (flowerStatus === 0) {
+                isGrowing = true;
+                flowerStatus = 1;
+                flowerGrowProgress = 0;
+                plantBtn.disabled = true;
+                document.getElementById('btn-cast-action').disabled = true;
+
+                let countdown = 5;
+
+                flowerTimer = setInterval(() => {
+                    countdown--;
+                    flowerGrowProgress += 20; 
+                    if (countdown === 0) {
+                        clearInterval(flowerTimer);
+                        flowerStatus = 2; 
+                        plantBtn.innerText = 'Thu hoạch hoa 🌸';
+                        plantBtn.disabled = false;
+                    }
+                }, 1000);
+            } 
+            else if (flowerStatus === 2) {
+                coins += 5;
+                flowerStatus = 0;
+                isGrowing = false;
+                flowerGrowProgress = 0;
+
+                // CHỮ NỔI KHI THU HOẠCH HOA
+                particles.push({x: 18, y: 80, text: '🌸 +5 Xu!', color: '#ffd54f', alpha: 1.0, vy: -0.5});
+                
+                plantBtn.innerText = 'Gieo hạt hoa 🌱';
+                document.getElementById('btn-cast-action').disabled = false;
+                
+                saveGameData(); // Lưu lại sau khi thu hoạch
+                updateGameUI();
+            }
+        }
+
+        function buyRod(rodName, price) {
+            if (isFishing || isGrowing) return;
+
+            if (coins >= price) {
+                coins -= price;
+                activeRod = rodName;
+
+                // CHỮ NỔI MUA THÀNH CÔNG
+                particles.push({x: 125, y: 80, text: '🏪 ĐÃ MUA!', color: '#4caf50', alpha: 1.0, vy: -0.6});
+
+                saveGameData(); // Lưu lại sau khi mua cần câu
+                updateGameUI();
+            } else {
+                alert('❌ Bạn không đủ Xu để mua chiếc cần câu này! Hãy trồng hoa kiếm thêm nhé.');
+            }
+        }
+
+        // Tự động kiểm tra tags, nếu đã mở khóa bằng cách đổi cá thì lưu vĩnh viễn
+        function updateLockedLinks() {
+            const cards = document.querySelectorAll('.char-card');
+            cards.forEach(card => {
+                const footer = card.querySelector('.char-footer');
+                if (!footer) return; 
+
+                const charId = footer.getAttribute('data-char-id');
+                const linkData = footer.getAttribute('data-link');
+                const linkText = footer.getAttribute('data-text');
+                if (!linkData || !charId) return;
+
+                // Nếu nhân vật này đã được mở khóa bằng cách đổi cá từ trước
+                if (unlockedCharacters.indexOf(charId) !== -1) {
+                    footer.innerHTML = "<a href=\"" + linkData + "\" target=\"_blank\">" + linkText + "</a>";
+                    return;
+                }
+
+                const tagsText = card.querySelector('.char-tags').innerText;
+                const isSpecial = tagsText.includes('#18+') || tagsText.includes('#21+');
+                const requiredFishes = isSpecial ? 50 : 10; // Thay đổi mốc cá thường thành 10 cá
+
+                // Nếu có đủ cá, hiển thị nút "Nhận nuôi bé iu được rồi nèe"
+                if (fishesCaught >= requiredFishes) {
+                    footer.innerHTML = "<button class=\"btn-buy\" style=\"padding: 8px 15px; font-size: 0.85rem; border-radius: 12px;\" onclick=\"redeemLink('" + charId + "', " + requiredFishes + ")\">🐾 Nhận nuôi bé iu được rồi nèe (-" + requiredFishes + " cá)</button>";
+                } else {
+                    // Cập nhật dòng thông báo khóa chuẩn xác theo yêu cầu mới (không dùng Template Literals để chống lỗi)
+                    footer.innerHTML = "<span>🔒 Cần " + requiredFishes + " 🐟 để nhận nuôi bé iuu (Đã câu: " + fishesCaught + "/" + requiredFishes + ")</span>";
+                }
+            });
+        }
+
+        // Thực hiện trừ cá khi đổi link thành công
+        function redeemLink(charId, cost) {
+            if (fishesCaught >= cost) {
+                fishesCaught -= cost;
+                unlockedCharacters.push(charId); // Lưu trạng thái đã mở khóa thành công
+                
+                // Hiệu ứng chữ nổi bay màu xanh lá tại vị trí game
+                particles.push({x: 125, y: 70, text: '🔓 ĐÃ NHẬN NUÔI!', color: '#4caf50', alpha: 1.0, vy: -0.6});
+                
+                alert("🎉 Bạn đã nhận nuôi thành công bé iu! (Đã tiêu thụ -" + cost + " con cá)");
+                
+                saveGameData(); // Lưu trạng thái đã mở khóa vào bộ nhớ
+                updateGameUI();
+            } else {
+                alert('❌ Bạn không có đủ số lượng cá cần thiết!');
+            }
+        }
+
+
+        // --- LOGIC GIAO DIỆN WEB ---
+
+        // Khởi động an toàn đồ họa của Game
+        function initGame() {
+            canvas = document.getElementById('game-canvas');
+            if (canvas && !ctx) {
+                ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = false;
+                
+                loadGameData(); // Khôi phục dữ liệu game cũ nếu có
+                updateGameUI();
+                gameLoop(); // Chỉ khởi chạy vòng lặp Canvas vẽ đồ họa khi trang 2 đã hiển thị
+            }
+        }
+
+        // Hiện và tắt Popup Giới thiệu
+        function showIntroModal() {
+            document.getElementById('intro-modal').style.display = 'flex';
+        }
+        function closeIntroModal() {
+            document.getElementById('intro-modal').style.display = 'none';
+        }
+
+        // Hàm chuyển đổi từ trang 1 sang trang 2
+        function checkIn() {
+            document.getElementById('page-1').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('page-1').style.display = 'none';
+                document.getElementById('page-2').style.display = 'block';
+                window.scrollTo(0, 0); 
+                
+                // GỌI KHỞI TẠO GAME KHI TRANG 2 ĐÃ HIỂN THỊ
+                initGame();
+
+                // HIỂN THỊ POPUP WELCOME GIỚI THIỆU TRANG 2
+                showIntroModal();
+            }, 500); 
+        }
+
+        // Hàm mở/đóng cốt truyện bằng nút "Đọc cốt truyện"
+        function toggleStory(button) {
+            const card = button.closest('.char-card');
+            const content = card.querySelector('.char-content');
+            
+            card.classList.toggle('active');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        // Hàm click chọn Tag nhanh
+        function filterByTag(btnElement, tag) {
+            document.querySelectorAll('.filter-tag-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            btnElement.classList.add('active');
+
+            currentSelectedTag = tag;
+            applyAllFilters();
+        }
+
+        // Hàm nhập thông tin tìm kiếm
+        function filterCharacters() {
+            currentSearchQuery = document.getElementById('search-input').value.toLowerCase();
+            applyAllFilters();
+        }
+
+        // Hàm áp dụng đồng thời cả Bộ lọc Tag và Ô tìm kiếm
+        function applyAllFilters() {
+            const sections = document.querySelectorAll('.category-section');
+
+            sections.forEach(section => {
+                const cards = section.querySelectorAll('.char-card');
+                let visibleCardsInSection = 0;
+
+                cards.forEach(card => {
+                    const name = card.querySelector('h2').innerText.toLowerCase();
+                    const tagsText = card.querySelector('.char-tags').innerText.toLowerCase();
+
+                    const matchesSearch = name.includes(currentSearchQuery) || tagsText.includes(currentSearchQuery);
+                    const matchesTag = (currentSelectedTag === 'Tất cả') || tagsText.includes(currentSelectedTag.toLowerCase());
+
+                    if (matchesSearch && matchesTag) {
+                        card.style.display = 'flex';
+                        visibleCardsInSection++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCardsInSection > 0) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
