@@ -754,7 +754,7 @@
                          data-char-id="du"
                          data-link="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TelRFW-1TJGEX3y3q0z1QYkk_A2ORoRB%22%5D,%22action%22:%22open%22,%22userId%22:%22104129054052709575704%22,%22resourceKeys%22:%7B%7D%7D" 
                          data-text="Gặp bé Du ở đây nè 🏀">
-                        <span>🔒 Cần cá để đổi link!</span>
+                        <span>🔒 Câu cá để mở khóa link!</span>
                     </div>
 
                     <div class="char-content">
@@ -896,7 +896,7 @@
 
                     <div class="char-content">
                         <p><strong>1.</strong><br>Mùa thu năm mười lăm tuổi chênh chao lướt qua những tán xà cừ cổ thụ... "Rầm!" Tiếng va đập đột ngột cắt ngang dòng suy nghĩ mông lung. Một vài nam sinh bàn đầu mải rượt đuổi nhau, một người lùi lại quá đà đã va mạnh vào góc bàn của em làm đống sách vở ngổn ngang dưới đất.</p>
-                        <p>Ngay khi em đang luống cuống chuẩn bị cúi người dọn dẹp, một bóng người đã lặng lẽ bước tới. Một bàn tay thon dài, sạch sẽ dịu dàng nhặt chiếc bút máy lên... Đó là Cố Nhiên.</p>
+                        <p>Ngay khi em đang luống cuống chuẩn bị cúi người dọn dẹp, một bóng người đã lặng lẽ bước tới. Một bàn tay thon dài, sạch sử dịu dàng nhặt chiếc bút máy lên... Đó là Cố Nhiên.</p>
                         <p>Cậu khẽ mỉm cười, nụ cười ôn hòa như làn gió: "Cậu có sao không? Lớp mới đầu năm hơi ồn, cậu cất sách vào ngăn bàn đi..."</p>
                         <p>Nhìn cái tên ấy, em khẽ mím môi, lòng trào dâng một cảm xúc ngọt ngào đầy lạ lẫm.</p>
                         <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖</p>
@@ -907,7 +907,7 @@
                         <p>Đúng lúc đó, một bàn tay thô ráp, ấm nóng đột ngột nắm chặt lấy cổ tay em, thô bạo kéo giật em về phía sau. Là Văn Duệ Hiên.</p>
                         <p>"Cậu bị điếc hay bị mù vậy? Thằng khốn đó coi lòng tốt của cậu như rác rưởi để ban phát cho đứa khác, vậy mà cậu vẫn mặt dày dâng tận tay cho nó?"</p>
                         <p>Hắn điên tiết cởi phăng chiếc áo khoác đồng phục, thô lỗ trùm kín lên đầu em: "Cứ khóc đi! Khóc mù mắt luôn đi rồi ông đây dắt cậu đi lại. Chứ đừng để thằng khốn đó nhìn thấy bản mặt thảm hại này của cậu!"</p>
-                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖⊹</p>
+                        <p>⊹ ࣪ ﹏𓊝﹏𓂁﹏⊹ ࣪ ˖#</p>
                         <p><strong>3.</strong><br>Hộp sữa dâu mà trước đây em vẫn thường vụng trộm đặt vào hộc bàn của Cố Nhiên, giờ đây lại luôn xuất hiện trên bàn của em vào mỗi giờ ra chơi. Văn Duệ Hiên vứt cộc lốc hộp sữa lên mặt bàn gỗ: "Đàn em của tôi mua thừa, uống đi kẻo chật chỗ."</p>
                         <p>Trong một tiết học tĩnh lặng vào buổi chiều muộn, em đắm chìm trong dáng vẻ hoàn mỹ của Cố Nhiên trên bục giảng. Phía sau em, Văn Duệ Hiên không hề nhìn lên bảng đen. Hắn nghiêng đầu gục mặt lên bàn, đôi mắt đen sâu thẳm chỉ chăm chú nhìn vào bóng lưng của em.</p>
                         <p>Hắn ngồi bật dậy, thô bạo xé một góc giấy nháp. Hắn gấp đôi mảnh giấy lại, rồi thản nhiên ném nó lên mặt bàn gỗ của em. Trên mảnh giấy nhỏ phẳng phiu, nét chữ ngang tàng của hắn hiện ra rõ mồn một:</p>
@@ -1335,39 +1335,47 @@
 
         // --- LOGIC TRÒ CHƠI CÂU CÁ ---
 
-        // Khôi phục dữ liệu game từ bộ nhớ Local Storage
+        // Khôi phục dữ liệu game từ bộ nhớ Local Storage (bọc khối try-catch an toàn tuyệt đối)
         function loadGameData() {
-            var savedCoins = localStorage.getItem("meobeo_coins");
-            if (savedCoins !== null) {
-                coins = parseInt(savedCoins, 10);
-            }
-
-            var savedFishes = localStorage.getItem("meobeo_fishesCaught");
-            if (savedFishes !== null) {
-                fishesCaught = parseInt(savedFishes, 10);
-            }
-
-            var savedRod = localStorage.getItem("meobeo_activeRod");
-            if (savedRod !== null) {
-                activeRod = savedRod;
-            }
-
-            var savedUnlocked = localStorage.getItem("meobeo_unlockedCharacters");
-            if (savedUnlocked !== null) {
-                try {
-                    unlockedCharacters = JSON.parse(savedUnlocked);
-                } catch (e) {
-                    unlockedCharacters = [];
+            try {
+                var savedCoins = localStorage.getItem("meobeo_coins");
+                if (savedCoins !== null) {
+                    coins = parseInt(savedCoins, 10);
                 }
+
+                var savedFishes = localStorage.getItem("meobeo_fishesCaught");
+                if (savedFishes !== null) {
+                    fishesCaught = parseInt(savedFishes, 10);
+                }
+
+                var savedRod = localStorage.getItem("meobeo_activeRod");
+                if (savedRod !== null) {
+                    activeRod = savedRod;
+                }
+
+                var savedUnlocked = localStorage.getItem("meobeo_unlockedCharacters");
+                if (savedUnlocked !== null) {
+                    try {
+                        unlockedCharacters = JSON.parse(savedUnlocked);
+                    } catch (e) {
+                        unlockedCharacters = [];
+                    }
+                }
+            } catch (err) {
+                console.log("LocalStorage is disabled or blocked: ", err);
             }
         }
 
-        // Ghi lại dữ liệu game vào bộ nhớ Local Storage
+        // Ghi lại dữ liệu game vào bộ nhớ Local Storage (bọc khối try-catch an toàn tuyệt đối)
         function saveGameData() {
-            localStorage.setItem("meobeo_coins", coins);
-            localStorage.setItem("meobeo_fishesCaught", fishesCaught);
-            localStorage.setItem("meobeo_activeRod", activeRod);
-            localStorage.setItem("meobeo_unlockedCharacters", JSON.stringify(unlockedCharacters));
+            try {
+                localStorage.setItem("meobeo_coins", coins);
+                localStorage.setItem("meobeo_fishesCaught", fishesCaught);
+                localStorage.setItem("meobeo_activeRod", activeRod);
+                localStorage.setItem("meobeo_unlockedCharacters", JSON.stringify(unlockedCharacters));
+            } catch (err) {
+                console.log("LocalStorage is disabled or blocked: ", err);
+            }
         }
 
         function updateGameUI() {
@@ -1528,7 +1536,7 @@
             }
         }
 
-        // Tự động kiểm tra tags, hiển thị nút nhận nuôi hoặc thông báo cần tích thêm 🐟
+        // Tự động kiểm tra tags, nếu đã mở khóa bằng cách đổi cá thì lưu vĩnh viễn
         function updateLockedLinks() {
             const cards = document.querySelectorAll('.char-card');
             cards.forEach(card => {
@@ -1554,7 +1562,7 @@
                 if (fishesCaught >= requiredFishes) {
                     footer.innerHTML = "<button class=\"btn-buy\" style=\"padding: 8px 15px; font-size: 0.85rem; border-radius: 12px;\" onclick=\"redeemLink('" + charId + "', " + requiredFishes + ")\">🐾 Nhận nuôi bé iu được rồi nèe (-" + requiredFishes + " cá)</button>";
                 } else {
-                    // Sửa đổi dòng thông báo khóa khi chưa đủ cá theo yêu cầu mới
+                    // Cập nhật dòng thông báo khóa chuẩn xác theo yêu cầu mới (không dùng Template Literals để chống lỗi)
                     footer.innerHTML = "<span>🔒 Cần " + requiredFishes + " 🐟 để nhận nuôi bé iuu (Đã câu: " + fishesCaught + "/" + requiredFishes + ")</span>";
                 }
             });
@@ -1562,123 +1570,4 @@
 
         // Thực hiện trừ cá khi đổi link thành công
         function redeemLink(charId, cost) {
-            if (fishesCaught >= cost) {
-                fishesCaught -= cost;
-                unlockedCharacters.push(charId); // Lưu trạng thái đã mở khóa thành công
-                
-                // Hiệu ứng chữ nổi bay màu xanh lá tại vị trí game
-                particles.push({x: 125, y: 70, text: '🔓 ĐÃ NHẬN NUÔI!', color: '#4caf50', alpha: 1.0, vy: -0.6});
-                
-                alert("🎉 Bạn đã nhận nuôi thành công bé iu! (Đã tiêu thụ -" + cost + " con cá)");
-                
-                saveGameData(); // Lưu trạng thái đã mở khóa vào bộ nhớ
-                updateGameUI();
-            } else {
-                alert('❌ Bạn không có đủ số lượng cá cần thiết!');
-            }
-        }
-
-
-        // --- LOGIC GIAO DIỆN WEB ---
-
-        // Khởi động an toàn đồ họa của Game
-        function initGame() {
-            canvas = document.getElementById('game-canvas');
-            if (canvas && !ctx) {
-                ctx = canvas.getContext('2d');
-                ctx.imageSmoothingEnabled = false;
-                
-                loadGameData(); // Khôi phục dữ liệu game cũ nếu có
-                updateGameUI();
-                gameLoop(); // Chỉ khởi chạy vòng lặp Canvas vẽ đồ họa khi trang 2 đã hiển thị
-            }
-        }
-
-        // Hiện và tắt Popup Giới thiệu
-        function showIntroModal() {
-            document.getElementById('intro-modal').style.display = 'flex';
-        }
-        function closeIntroModal() {
-            document.getElementById('intro-modal').style.display = 'none';
-        }
-
-        // Hàm chuyển đổi từ trang 1 sang trang 2
-        function checkIn() {
-            document.getElementById('page-1').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('page-1').style.display = 'none';
-                document.getElementById('page-2').style.display = 'block';
-                window.scrollTo(0, 0); 
-                
-                // GỌI KHỞI TẠO GAME KHI TRANG 2 ĐÃ HIỂN THỊ
-                initGame();
-
-                // HIỂN THỊ POPUP WELCOME GIỚI THIỆU TRANG 2
-                showIntroModal();
-            }, 500); 
-        }
-
-        // Hàm mở/đóng cốt truyện bằng nút "Đọc cốt truyện"
-        function toggleStory(button) {
-            const card = button.closest('.char-card');
-            const content = card.querySelector('.char-content');
-            
-            card.classList.toggle('active');
-            
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
-            }
-        }
-
-        // Hàm click chọn Tag nhanh
-        function filterByTag(btnElement, tag) {
-            document.querySelectorAll('.filter-tag-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            btnElement.classList.add('active');
-
-            currentSelectedTag = tag;
-            applyAllFilters();
-        }
-
-        // Hàm nhập thông tin tìm kiếm
-        function filterCharacters() {
-            currentSearchQuery = document.getElementById('search-input').value.toLowerCase();
-            applyAllFilters();
-        }
-
-        // Hàm áp dụng đồng thời cả Bộ lọc Tag và Ô tìm kiếm
-        function applyAllFilters() {
-            const sections = document.querySelectorAll('.category-section');
-
-            sections.forEach(section => {
-                const cards = section.querySelectorAll('.char-card');
-                let visibleCardsInSection = 0;
-
-                cards.forEach(card => {
-                    const name = card.querySelector('h2').innerText.toLowerCase();
-                    const tagsText = card.querySelector('.char-tags').innerText.toLowerCase();
-
-                    const matchesSearch = name.includes(currentSearchQuery) || tagsText.includes(currentSearchQuery);
-                    const matchesTag = (currentSelectedTag === 'Tất cả') || tagsText.includes(currentSelectedTag.toLowerCase());
-
-                    if (matchesSearch && matchesTag) {
-                        card.style.display = 'flex';
-                        visibleCardsInSection++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                if (visibleCardsInSection > 0) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+            if (fis
