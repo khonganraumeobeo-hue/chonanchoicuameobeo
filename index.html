@@ -131,7 +131,7 @@
             color: #5865F2;
         }
 
-        /* --- POPUP GIỚI THIỆU (INTRO MODAL) --- */
+        /* --- POPUP GIỚI THIỆU (WELCOME MODAL) --- */
         .intro-modal {
             display: none;
             position: fixed;
@@ -754,7 +754,7 @@
                          data-char-id="du"
                          data-link="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TelRFW-1TJGEX3y3q0z1QYkk_A2ORoRB%22%5D,%22action%22:%22open%22,%22userId%22:%22104129054052709575704%22,%22resourceKeys%22:%7B%7D%7D" 
                          data-text="Gặp bé Du ở đây nè 🏀">
-                        <span>🔒 Câu cá để mở khóa link!</span>
+                        <span>🔒 Cần cá để đổi link!</span>
                     </div>
 
                     <div class="char-content">
@@ -1046,10 +1046,10 @@
             woodLight: "#a1887f", woodDark: "#5d4037",
             treeGreen: "#2e7d32", treeLight: "#4caf50",
             houseWall: "#d7ccc8", houseRoof: "#795548",
-            dogGold: "#ffb74d", dogWhite: "#ffffff",
-            hat: "#ffe082", hair: "#5d4037", skin: "#ffcc80", shirt: "#1976d2",
-            grass: "#81c784", grassDark: "#388e3c",
-            flowerPink: "#f48fb1", flowerStem: "#4caf50"
+            dogGold: '#ffb74d', dogWhite: '#ffffff',
+            hat: '#ffe082', hair: '#5d4037', skin: '#ffcc80', shirt: '#1976d2',
+            grass: '#81c784', grassDark: '#388e3c',
+            flowerPink: '#f48fb1', flowerStem: '#4caf50'
         };
 
         // Vòng lặp đồ họa Canvas 60 FPS
@@ -1335,6 +1335,41 @@
 
         // --- LOGIC TRÒ CHƠI CÂU CÁ ---
 
+        // Khôi phục dữ liệu game từ bộ nhớ Local Storage
+        function loadGameData() {
+            var savedCoins = localStorage.getItem("meobeo_coins");
+            if (savedCoins !== null) {
+                coins = parseInt(savedCoins, 10);
+            }
+
+            var savedFishes = localStorage.getItem("meobeo_fishesCaught");
+            if (savedFishes !== null) {
+                fishesCaught = parseInt(savedFishes, 10);
+            }
+
+            var savedRod = localStorage.getItem("meobeo_activeRod");
+            if (savedRod !== null) {
+                activeRod = savedRod;
+            }
+
+            var savedUnlocked = localStorage.getItem("meobeo_unlockedCharacters");
+            if (savedUnlocked !== null) {
+                try {
+                    unlockedCharacters = JSON.parse(savedUnlocked);
+                } catch (e) {
+                    unlockedCharacters = [];
+                }
+            }
+        }
+
+        // Ghi lại dữ liệu game vào bộ nhớ Local Storage
+        function saveGameData() {
+            localStorage.setItem("meobeo_coins", coins);
+            localStorage.setItem("meobeo_fishesCaught", fishesCaught);
+            localStorage.setItem("meobeo_activeRod", activeRod);
+            localStorage.setItem("meobeo_unlockedCharacters", JSON.stringify(unlockedCharacters));
+        }
+
         function updateGameUI() {
             document.getElementById('game-coins').innerText = coins;
             document.getElementById('game-fishes').innerText = fishesCaught;
@@ -1421,6 +1456,8 @@
                         screenText.innerText = randBreak;
                     }
 
+                    saveGameData(); // Lưu trạng thái sau khi câu cá
+
                     setTimeout(() => {
                         renderState = 'idle';
                         isFishing = false;
@@ -1468,6 +1505,8 @@
                 
                 plantBtn.innerText = 'Gieo hạt hoa 🌱';
                 document.getElementById('btn-cast-action').disabled = false;
+                
+                saveGameData(); // Lưu lại sau khi thu hoạch
                 updateGameUI();
             }
         }
@@ -1482,13 +1521,14 @@
                 // CHỮ NỔI MUA THÀNH CÔNG
                 particles.push({x: 125, y: 80, text: '🏪 ĐÃ MUA!', color: '#4caf50', alpha: 1.0, vy: -0.6});
 
+                saveGameData(); // Lưu lại sau khi mua cần câu
                 updateGameUI();
             } else {
                 alert('❌ Bạn không đủ Xu để mua chiếc cần câu này! Hãy trồng hoa kiếm thêm nhé.');
             }
         }
 
-        // Tự động kiểm tra tags, nếu đã mở khóa bằng cách đổi cá thì lưu vĩnh viễn
+        // Tự động kiểm tra tags, hiển thị nút nhận nuôi hoặc thông báo cần tích thêm 🐟
         function updateLockedLinks() {
             const cards = document.querySelectorAll('.char-card');
             cards.forEach(card => {
@@ -1514,7 +1554,8 @@
                 if (fishesCaught >= requiredFishes) {
                     footer.innerHTML = "<button class=\"btn-buy\" style=\"padding: 8px 15px; font-size: 0.85rem; border-radius: 12px;\" onclick=\"redeemLink('" + charId + "', " + requiredFishes + ")\">🐾 Nhận nuôi bé iu được rồi nèe (-" + requiredFishes + " cá)</button>";
                 } else {
-                    footer.innerHTML = "<span>🔒 Cần " + requiredFishes + " cá để đổi! (Đã câu: " + fishesCaught + "/" + requiredFishes + ")</span>";
+                    // Sửa đổi dòng thông báo khóa khi chưa đủ cá theo yêu cầu mới
+                    footer.innerHTML = "<span>🔒 Cần " + requiredFishes + " 🐟 để nhận nuôi bé iuu (Đã câu: " + fishesCaught + "/" + requiredFishes + ")</span>";
                 }
             });
         }
@@ -1529,6 +1570,8 @@
                 particles.push({x: 125, y: 70, text: '🔓 ĐÃ NHẬN NUÔI!', color: '#4caf50', alpha: 1.0, vy: -0.6});
                 
                 alert("🎉 Bạn đã nhận nuôi thành công bé iu! (Đã tiêu thụ -" + cost + " con cá)");
+                
+                saveGameData(); // Lưu trạng thái đã mở khóa vào bộ nhớ
                 updateGameUI();
             } else {
                 alert('❌ Bạn không có đủ số lượng cá cần thiết!');
@@ -1544,6 +1587,8 @@
             if (canvas && !ctx) {
                 ctx = canvas.getContext('2d');
                 ctx.imageSmoothingEnabled = false;
+                
+                loadGameData(); // Khôi phục dữ liệu game cũ nếu có
                 updateGameUI();
                 gameLoop(); // Chỉ khởi chạy vòng lặp Canvas vẽ đồ họa khi trang 2 đã hiển thị
             }
